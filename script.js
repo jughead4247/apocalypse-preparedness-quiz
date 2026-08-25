@@ -822,24 +822,60 @@ function updateStrengthWeakness() {
         "environment"
     ];
 
-    let strongest = categories[0];
-    let weakest = categories[0];
+    const categoryPercentages = {};
 
     categories.forEach(category => {
 
-        if (categoryScores[category] >
-            categoryScores[strongest]) {
+        const categoryQuestions =
+            questions.filter(q => q.category === category);
 
+        const maximumCategoryScore =
+            categoryQuestions.reduce((total, question) => {
+
+                const maxAnswer = Math.max(
+                    ...question.answers.map(answer => answer[1])
+                );
+
+                return total + maxAnswer;
+
+            }, 0);
+
+        if (maximumCategoryScore > 0) {
+
+            categoryPercentages[category] =
+                (categoryScores[category] / maximumCategoryScore) * 100;
+
+        } else {
+
+            categoryPercentages[category] = 0;
+
+        }
+
+    });
+
+
+    let strongest = categories[0];
+    let weakest = categories[0];
+
+
+    categories.forEach(category => {
+
+        if (
+            categoryPercentages[category] >
+            categoryPercentages[strongest]
+        ) {
             strongest = category;
         }
 
-        if (categoryScores[category] <
-            categoryScores[weakest]) {
-
+        if (
+            categoryPercentages[category] <
+            categoryPercentages[weakest]
+        ) {
             weakest = category;
         }
 
     });
+
 
     strengthArea.textContent =
         categoryNames[strongest];
