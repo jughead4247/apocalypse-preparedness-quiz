@@ -295,25 +295,29 @@ button:active {
 }
 
 .strength-box {
-    background: #f5f5f5;
-    border: 1px solid #ddd;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: #fff;
 }
 
 .weakness-box {
-    background: #fafafa;
-    border: 1px solid #ddd;
+    background: #151515;
+    border: 1px solid #333;
+    color: #fff;
 }
 
 .strength-box h3,
 .weakness-box h3 {
     margin: 0 0 8px;
     font-size: 15px;
+    color: #fff;
 }
 
 .strength-box p,
 .weakness-box p {
     margin: 0;
     font-weight: 700;
+    color: #fff;
 }
 
 /* =========================
