@@ -727,6 +727,7 @@ function restartQuiz() {
 }
 
 
+```javascript
 // ============================================================
 // SHARE RESULT
 // ============================================================
@@ -739,6 +740,10 @@ function shareResult() {
     const shareText =
         `I scored ${score}% on the How Prepared Are You for the Apocalypse? quiz! I am "${title}". Can you beat my score?`;
 
+    const fullText =
+        `${shareText}\n\n${window.location.href}`;
+
+    // Use native sharing when available
     if (navigator.share) {
 
         navigator.share({
@@ -747,23 +752,25 @@ function shareResult() {
             url: window.location.href
         }).catch(() => {});
 
-    } else {
-
-        navigator.clipboard.writeText(
-            `${shareText} ${window.location.href}`
-        ).then(() => {
-
-            alert("Your result has been copied to the clipboard!");
-
-        }).catch(() => {
-
-            alert(
-                `${shareText}\n\n${window.location.href}`
-            );
-
-        });
-
+        return;
     }
+
+    // Clipboard API when available
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+
+        navigator.clipboard.writeText(fullText)
+            .then(() => {
+                alert("Your result has been copied to the clipboard!");
+            })
+            .catch(() => {
+                fallbackCopy(fullText);
+            });
+
+        return;
+    }
+
+    // Older browser / HTTP fallback
+    fallbackCopy(fullText);
 }
 
 
@@ -778,6 +785,7 @@ function challengeFriends() {
     const challengeText =
         `I scored ${score}% on the Apocalypse Preparedness Quiz. 🧟\n\nHow prepared are YOU?\n\n${window.location.href}`;
 
+    // Use native sharing when available
     if (navigator.share) {
 
         navigator.share({
@@ -786,23 +794,69 @@ function challengeFriends() {
             url: window.location.href
         }).catch(() => {});
 
-    } else {
+        return;
+    }
+
+    // Clipboard API when available
+    if (navigator.clipboard && navigator.clipboard.writeText) {
 
         navigator.clipboard.writeText(challengeText)
             .then(() => {
-
-                alert(
-                    "Challenge message copied! Send it to your friends."
-                );
-
+                alert("Challenge message copied! Send it to your friends.");
             })
             .catch(() => {
-
-                alert(challengeText);
-
+                fallbackCopy(challengeText);
             });
 
+        return;
     }
+
+    // Older browser / HTTP fallback
+    fallbackCopy(challengeText);
+}
+
+
+// ============================================================
+// COPY FALLBACK
+// ============================================================
+
+function fallbackCopy(text) {
+
+    const textarea = document.createElement("textarea");
+
+    textarea.value = text;
+
+    textarea.style.position = "fixed";
+    textarea.style.left = "-9999px";
+    textarea.style.top = "0";
+
+    document.body.appendChild(textarea);
+
+    textarea.focus();
+    textarea.select();
+
+    try {
+
+        const successful =
+            document.execCommand("copy");
+
+        if (successful) {
+
+            alert("Copied! You can now paste and share it with your friends.");
+
+        } else {
+
+            alert(text);
+
+        }
+
+    } catch (error) {
+
+        alert(text);
+
+    }
+
+    document.body.removeChild(textarea);
 }
 
 
