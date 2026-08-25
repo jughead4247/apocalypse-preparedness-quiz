@@ -817,4 +817,3 @@ restartBtn.addEventListener("click", restartQuiz);
 shareBtn.addEventListener("click", shareResult);
 
 challengeBtn.addEventListener("click", challengeFriends);
-```
