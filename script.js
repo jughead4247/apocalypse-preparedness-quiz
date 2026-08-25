@@ -856,30 +856,36 @@ function shareResult() {
     const shareText =
         `I scored ${score}% on the How Prepared Are You for the Apocalypse? quiz! I am "${title}". Can you beat my score?`;
 
-    const fullText =
-        `${shareText}\n\n${window.location.href}`;
+    const shareUrl =
+        window.location.href;
 
-
+    // Native sharing
     if (navigator.share) {
 
         navigator.share({
             title: "How Prepared Are You for the Apocalypse?",
             text: shareText,
-            url: window.location.href
-        }).catch(() => {});
+            url: shareUrl
+        })
+        .catch(() => {});
 
         return;
     }
 
+    // Clipboard
+    const fullText =
+        `${shareText}\n\n${shareUrl}`;
 
-    if (navigator.clipboard &&
-        navigator.clipboard.writeText) {
+    if (
+        navigator.clipboard &&
+        typeof navigator.clipboard.writeText === "function"
+    ) {
 
         navigator.clipboard.writeText(fullText)
             .then(() => {
 
                 alert(
-                    "Your result has been copied to the clipboard!"
+                    "Your result has been copied! You can now paste and share it with your friends."
                 );
 
             })
@@ -892,10 +898,9 @@ function shareResult() {
         return;
     }
 
-
+    // Older browser / HTTP fallback
     fallbackCopy(fullText);
 }
-
 
 // ============================================================
 // CHALLENGE FRIENDS
@@ -906,29 +911,34 @@ function challengeFriends() {
     const score = finalScore.textContent;
 
     const challengeText =
-        `I scored ${score}% on the Apocalypse Preparedness Quiz. ⚠️\n\nHow prepared are YOU?\n\n${window.location.href}`;
+        `I scored ${score}% on the Apocalypse Preparedness Quiz! 🧟\n\n` +
+        `How prepared are YOU?\n\n` +
+        `${window.location.href}`;
 
-
+    // Native sharing
     if (navigator.share) {
 
         navigator.share({
             title: "Apocalypse Preparedness Challenge",
             text: challengeText,
             url: window.location.href
-        }).catch(() => {});
+        })
+        .catch(() => {});
 
         return;
     }
 
-
-    if (navigator.clipboard &&
-        navigator.clipboard.writeText) {
+    // Clipboard
+    if (
+        navigator.clipboard &&
+        typeof navigator.clipboard.writeText === "function"
+    ) {
 
         navigator.clipboard.writeText(challengeText)
             .then(() => {
 
                 alert(
-                    "Challenge message copied! Send it to your friends."
+                    "Challenge copied! You can now paste it and send it to your friends."
                 );
 
             })
@@ -941,7 +951,7 @@ function challengeFriends() {
         return;
     }
 
-
+    // Older browser / HTTP fallback
     fallbackCopy(challengeText);
 }
 
