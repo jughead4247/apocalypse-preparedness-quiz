@@ -1,131 +1,53 @@
+// ============================================================
+// APOCALYPSE PREPAREDNESS QUIZ
+// ============================================================
+
+
+// ============================================================
+// QUESTIONS
+// ============================================================
+
 const questions = [
+
+    // ========================================================
+    // ENVIRONMENT
+    // ========================================================
+
+    {
+        question: "Where do you currently live?",
+        category: "environment",
+        answers: [
+            ["🏙️ Large city / urban area", 2],
+            ["🏢 Apartment or high-rise building", 2],
+            ["🏘️ Small town / suburban area", 3],
+            ["🌾 Rural area / farm / isolated property", 5]
+        ]
+    },
+
 
     // ========================================================
     // PHYSICAL
     // ========================================================
 
     {
-        question: "How would you describe your current physical fitness?",
+        question: "What is your age group?",
         category: "physical",
         answers: [
-            ["I get tired from normal daily activities", 1],
-            ["I'm not very active, but I manage", 2],
-            ["I'm reasonably fit", 3],
-            ["I'm physically fit and active", 4],
-            ["I'm in excellent shape and train regularly", 5]
+            ["0–15", 2],
+            ["16–25", 4],
+            ["26–55", 5],
+            ["56 and above", 3]
         ]
     },
 
     {
-        question: "How far could you comfortably walk in a day if necessary?",
+        question: "What is your primary mode of transportation?",
         category: "physical",
         answers: [
-            ["Less than 2 km", 1],
-            ["2–5 km", 2],
-            ["5–10 km", 3],
-            ["10–20 km", 4],
-            ["More than 20 km", 5]
-        ]
-    },
-
-    {
-        question: "How well can you handle physically demanding work?",
-        category: "physical",
-        answers: [
-            ["I struggle with physical work", 1],
-            ["I can manage short periods", 2],
-            ["I can handle moderate work", 3],
-            ["I can work hard for several hours", 4],
-            ["I can handle intense physical work for long periods", 5]
-        ]
-    },
-
-    {
-        question: "How confident are you in your ability to stay calm under physical stress?",
-        category: "physical",
-        answers: [
-            ["I usually panic", 1],
-            ["I become stressed very quickly", 2],
-            ["It depends on the situation", 3],
-            ["I generally stay composed", 4],
-            ["I perform well under extreme pressure", 5]
-        ]
-    },
-
-    {
-        question: "How comfortable are you spending a long period without modern comforts?",
-        category: "physical",
-        answers: [
-            ["I would struggle immediately", 1],
-            ["A few days would be difficult", 2],
-            ["I could manage for a while", 3],
-            ["I could adapt fairly well", 4],
-            ["I could live simply for a long time", 5]
-        ]
-    },
-
-
-    // ========================================================
-    // MEDICAL
-    // ========================================================
-
-    {
-        question: "How much basic first-aid knowledge do you have?",
-        category: "medical",
-        answers: [
-            ["Almost none", 1],
-            ["Very little", 2],
-            ["I know some basics", 3],
-            ["I know how to handle common injuries", 4],
-            ["I have strong first-aid knowledge or training", 5]
-        ]
-    },
-
-    {
-        question: "Could you properly treat a serious cut or bleeding injury?",
-        category: "medical",
-        answers: [
-            ["I wouldn't know what to do", 1],
-            ["I would probably panic", 2],
-            ["I know some basic steps", 3],
-            ["I could provide effective first aid", 4],
-            ["I am confident handling serious bleeding", 5]
-        ]
-    },
-
-    {
-        question: "How prepared are you with basic medicines and medical supplies?",
-        category: "medical",
-        answers: [
-            ["I have almost nothing", 1],
-            ["Only a few basic medicines", 2],
-            ["I have a small first-aid kit", 3],
-            ["I have a well-equipped kit", 4],
-            ["I have extensive medical supplies and knowledge", 5]
-        ]
-    },
-
-    {
-        question: "If someone with you became seriously injured, how useful could you be?",
-        category: "medical",
-        answers: [
-            ["I would not know what to do", 1],
-            ["I could only call for help", 2],
-            ["I could provide basic assistance", 3],
-            ["I could handle many emergency situations", 4],
-            ["I could provide advanced medical assistance", 5]
-        ]
-    },
-
-    {
-        question: "How well do you understand basic hygiene and disease prevention?",
-        category: "medical",
-        answers: [
-            ["I have never really thought about it", 1],
-            ["I know a few basics", 2],
-            ["I understand the main principles", 3],
-            ["I am careful about sanitation", 4],
-            ["I understand hygiene, sanitation and disease prevention very well", 5]
+            ["🚗 Car", 5],
+            ["🏍️ Motorcycle / scooter", 4],
+            ["🚲 Bicycle", 3],
+            ["🚌 Public transportation / walking", 2]
         ]
     },
 
@@ -135,257 +57,378 @@ const questions = [
     // ========================================================
 
     {
-        question: "How much drinking water do you currently have available at home?",
+        question: "What type of weapons or defensive tools are available in your home?",
         category: "resources",
         answers: [
-            ["Less than one day's supply", 1],
-            ["About 1–2 days", 2],
-            ["Several days", 3],
-            ["At least a couple of weeks", 4],
-            ["A large long-term supply", 5]
+            ["🔪 Knife / screwdriver or other basic hand tools", 3],
+            ["🔪 Machete", 4],
+            ["🪓 Axe", 4],
+            ["🔫 Firearm", 3]
+        ]
+    },
+
+
+    // ========================================================
+    // PROFILE ONLY
+    // ========================================================
+
+    {
+        question: "If you had to choose one defensive option during an apocalypse, which would you prefer?",
+        category: "profile",
+        answers: [
+            ["🔫 Gun", 0],
+            ["🔪 Knife", 0],
+            ["🔫🔪 Both", 0],
+            ["❌ Neither", 0]
+        ]
+    },
+
+
+    // ========================================================
+    // MEDICAL
+    // ========================================================
+
+    {
+        question: "How well do you understand medicines and basic medical care?",
+        category: "medical",
+        answers: [
+            ["🩺 Pretty well — I have good knowledge of medicines and basic medical care", 5],
+            ["💊 I can identify and use some common/basic medicines", 3],
+            ["🤷 I know very little about medicines", 2],
+            ["❓ I have essentially no knowledge about medicines", 1]
         ]
     },
 
     {
-        question: "How much food could you live on without going shopping?",
+        question: "How well can you handle and treat a wound in an emergency?",
+        category: "medical",
+        answers: [
+            ["🩹 Yes — I can treat most basic wounds myself", 5],
+            ["🩹 Somewhat — I can handle minor wounds but may need help with more serious injuries", 4],
+            ["🤝 I can assist someone else, but I'm not confident treating a wound myself", 2],
+            ["😰 I struggle around blood and may faint or become unable to help", 1]
+        ]
+    },
+
+
+    // ========================================================
+    // PROFILE ONLY
+    // ========================================================
+
+    {
+        question: "How do you feel in enclosed or confined spaces?",
+        category: "profile",
+        answers: [
+            ["😌 Comfortable — I have no problem being in enclosed spaces", 0],
+            ["🙂 Slightly uncomfortable, but I can manage", 0],
+            ["😰 Very uncomfortable — I prefer open spaces", 0],
+            ["😨 Extremely uncomfortable — I may panic or feel unable to stay inside", 0]
+        ]
+    },
+
+
+    // ========================================================
+    // MEDICAL
+    // ========================================================
+
+    {
+        question: "Are you currently taking any medication on a regular basis?",
+        category: "medical",
+        answers: [
+            ["💊 Yes — I take regular medication", 3],
+            ["💊 Yes — I occasionally need medication", 4],
+            ["❌ No — I don't currently take any medication", 5],
+            ["🤷 Prefer not to say / unsure", 3]
+        ]
+    },
+
+    {
+        question: "Do you have any known allergies?",
+        category: "medical",
+        answers: [
+            ["🤧 Yes — I have one known allergy", 4],
+            ["🤧 Yes — I have multiple known allergies", 3],
+            ["✅ No — I don't have any known allergies", 5],
+            ["🤷 I'm not sure / I've never been tested", 4]
+        ]
+    },
+
+
+    // ========================================================
+    // PHYSICAL
+    // ========================================================
+
+    {
+        question: "How physically durable are you when you need to travel on foot?",
+        category: "physical",
+        answers: [
+            ["🥾 I can walk for most of the day if necessary", 5],
+            ["🚶 I can comfortably walk several kilometers", 4],
+            ["🚶‍♂️ I can walk short distances, but I prefer using transportation", 2],
+            ["🪑 I have limited walking endurance and would struggle with long distances", 1]
+        ]
+    },
+
+    {
+        question: "How would you describe your running stamina?",
+        category: "physical",
+        answers: [
+            ["🏃 High — I can run for a long distance without stopping", 5],
+            ["🏃 Moderate — I can run a few kilometers before needing a break", 4],
+            ["🏃 Low — I can run only short distances", 2],
+            ["😮‍💨 Very low — I struggle to run or avoid running whenever possible", 1]
+        ]
+    },
+
+
+    // ========================================================
+    // RESOURCES
+    // ========================================================
+
+    {
+        question: "What type of flashlight or portable light do you have available?",
         category: "resources",
         answers: [
-            ["Less than a few days", 1],
-            ["About a week", 2],
-            ["Several weeks", 3],
-            ["A few months", 4],
-            ["Many months or longer", 5]
+            ["📱 Phone flashlight only", 2],
+            ["🔋 Battery-powered flashlight", 4],
+            ["🔌 Rechargeable / USB-charging flashlight", 4],
+            ["☀️ Solar-powered light / flashlight", 5]
+        ]
+    },
+
+
+    // ========================================================
+    // PRACTICAL
+    // ========================================================
+
+    {
+        question: "How well can you cook for yourself?",
+        category: "practical",
+        answers: [
+            ["👨‍🍳 I can prepare a wide variety of meals from basic ingredients", 5],
+            ["🍳 I can cook simple everyday meals", 4],
+            ["🥪 I can prepare only very basic food", 2],
+            ["❌ I don't know how to cook", 1]
         ]
     },
 
     {
-        question: "How prepared are you for losing electricity?",
+        question: "How well can you start a fire without modern appliances?",
+        category: "practical",
+        answers: [
+            ["🔥 I can start a fire using matches, a lighter, or similar methods", 4],
+            ["🪨 I can start a fire using a fire starter, flint, or similar tools", 5],
+            ["🔥 I can start a fire, but only with some assistance", 3],
+            ["🥶 I would freeze up and probably be unable to start one in an emergency", 1]
+        ]
+    },
+
+    // ========================================================
+    // PROFILE ONLY
+    // ========================================================
+
+    {
+        question: "How well could you function without your smartphone during an emergency?",
+        category: "profile",
+        answers: [
+            ["📵 Easily — I can function normally without it", 0],
+            ["🙂 Mostly — I can manage most important tasks without it", 0],
+            ["😕 With difficulty — I rely on it for many things", 0],
+            ["😰 Not well — I would struggle to function without it", 0]
+        ]
+    },
+
+    {
+        question: "What type of footwear do you usually wear?",
         category: "resources",
         answers: [
-            ["I depend completely on electricity", 1],
-            ["I have almost no backup", 2],
-            ["I have a few useful alternatives", 3],
-            ["I have several backup options", 4],
-            ["I could comfortably operate without electricity for a long time", 5]
+            ["🥾 Sturdy boots / work boots", 5],
+            ["👟 Sports shoes / sneakers", 4],
+            ["🩴 Sandals / flip-flops", 2],
+            ["👞 Formal shoes / other footwear", 2]
         ]
     },
 
     {
-        question: "How much useful emergency equipment do you already own?",
+        question: "What type of clothing do you usually wear on a daily basis?",
         category: "resources",
         answers: [
-            ["Almost none", 1],
-            ["A few basic items", 2],
-            ["Some useful equipment", 3],
-            ["A well-stocked emergency kit", 4],
-            ["Extensive emergency equipment", 5]
+            ["👕 Comfortable, durable everyday clothes", 5],
+            ["👖 Jeans / trousers with a regular shirt or T-shirt", 4],
+            ["🩳 Light, loose clothing", 3],
+            ["👔 Formal or office-style clothing", 2]
         ]
     },
 
+
+    // ========================================================
+    // RESOURCES
+    // ========================================================
+
     {
-        question: "If shops suddenly closed, how long could your household function?",
+        question: "How much water do you currently have stored at home?",
         category: "resources",
         answers: [
-            ["Less than a week", 1],
-            ["About a week", 2],
-            ["Several weeks", 3],
-            ["A few months", 4],
-            ["Six months or more", 5]
+            ["💧 Enough for several weeks", 5],
+            ["💧 Enough for several days", 4],
+            ["💧 Only a small amount, such as a few bottles", 2],
+            ["❌ No stored water beyond what I normally use", 1]
+        ]
+    },
+
+    {
+        question: "What is your home's main source of electricity?",
+        category: "resources",
+        answers: [
+            ["⚡ Electricity grid / power line", 2],
+            ["☀️ Solar power system", 4],
+            ["⛽ Generator", 4],
+            ["🔋 A combination of two or more sources / other backup system", 5]
         ]
     },
 
 
     // ========================================================
-    // PRACTICAL SKILLS
+    // PROFILE ONLY
     // ========================================================
 
     {
-        question: "How good are you at repairing broken household items?",
+        question: "In a major emergency, would you prefer to survive alone or with other people?",
+        category: "profile",
+        answers: [
+            ["👤 Alone — I work better independently", 0],
+            ["👥 Small group — I prefer a few trusted people", 0],
+            ["👨‍👩‍👧‍👦 Large group — I feel safer with more people around", 0],
+            ["🤷 No strong preference — it would depend on the situation", 0]
+        ]
+    },
+
+
+    // ========================================================
+    // PRACTICAL
+    // ========================================================
+
+    {
+        question: "What best describes your current occupation or background?",
         category: "practical",
         answers: [
-            ["I usually need someone else", 1],
-            ["I can do very simple repairs", 2],
-            ["I can handle basic repairs", 3],
-            ["I'm good with tools and repairs", 4],
-            ["I can repair or improvise many things", 5]
-        ]
-    },
-
-    {
-        question: "How comfortable are you using hand tools?",
-        category: "practical",
-        answers: [
-            ["I rarely use them", 1],
-            ["I know a few basics", 2],
-            ["I can use common tools", 3],
-            ["I'm comfortable with most tools", 4],
-            ["I'm highly skilled with tools", 5]
-        ]
-    },
-
-    {
-        question: "Could you cook a nutritious meal without electricity?",
-        category: "practical",
-        answers: [
-            ["I wouldn't know how", 1],
-            ["It would be difficult", 2],
-            ["I could manage something simple", 3],
-            ["I could prepare several meals", 4],
-            ["I could cook efficiently using alternative methods", 5]
-        ]
-    },
-
-    {
-        question: "How capable are you at finding practical solutions when something goes wrong?",
-        category: "practical",
-        answers: [
-            ["I usually need someone to solve it", 1],
-            ["I struggle to improvise", 2],
-            ["I can sometimes figure things out", 3],
-            ["I'm good at solving problems", 4],
-            ["I'm very good at improvising with limited resources", 5]
-        ]
-    },
-
-    {
-        question: "How much practical knowledge could you teach another survivor?",
-        category: "practical",
-        answers: [
-            ["Very little", 1],
-            ["A few basic things", 2],
-            ["Several useful skills", 3],
-            ["Many practical skills", 4],
-            ["I have a broad range of useful skills", 5]
+            ["🔧 Skilled / blue-collar work — construction, mechanic, technician, trades, etc.", 5],
+            ["💻 Office / computer / IT-based work", 3],
+            ["🛡️ Defence / police / security / emergency services", 5],
+            ["🌾 Farming / agriculture / outdoor work", 5],
+            ["🛒 Retail / sales / customer service", 2],
+            ["🎓 Student", 3],
+            ["👔 Other professional / specialized work", 4],
+            ["❌ Not currently working / retired / other", 2]
         ]
     },
 
 
     // ========================================================
-    // SOCIAL & ADAPTABILITY
+    // PROFILE ONLY
     // ========================================================
 
     {
-        question: "If the normal world disappeared tomorrow, how quickly could you adapt?",
-        category: "social",
+        question: "How comfortable are you around animals?",
+        category: "profile",
         answers: [
-            ["I would be completely lost", 1],
-            ["It would take me a long time", 2],
-            ["I could adapt gradually", 3],
-            ["I could adapt fairly quickly", 4],
-            ["I adapt extremely well to changing situations", 5]
-        ]
-    },
-
-    {
-        question: "How well do you work with other people during a crisis?",
-        category: "social",
-        answers: [
-            ["I prefer to be completely alone", 1],
-            ["I find teamwork difficult", 2],
-            ["I can cooperate when necessary", 3],
-            ["I'm a good team member", 4],
-            ["I naturally help organize and support a group", 5]
-        ]
-    },
-
-    {
-        question: "How good are you at making difficult decisions under pressure?",
-        category: "social",
-        answers: [
-            ["I freeze", 1],
-            ["I struggle badly", 2],
-            ["I can decide with some difficulty", 3],
-            ["I make reasonable decisions", 4],
-            ["I can make difficult decisions quickly and calmly", 5]
-        ]
-    },
-
-    {
-        question: "How useful would your current friends, family or community be during a major crisis?",
-        category: "social",
-        answers: [
-            ["I would have almost nobody to rely on", 1],
-            ["Only one or two people", 2],
-            ["A small support network", 3],
-            ["A strong support network", 4],
-            ["A large group of capable people I could rely on", 5]
-        ]
-    },
-
-    {
-        question: "How willing are you to learn completely new skills if necessary?",
-        category: "social",
-        answers: [
-            ["I don't like learning unfamiliar things", 1],
-            ["I would learn only if forced", 2],
-            ["I would try", 3],
-            ["I enjoy learning useful skills", 4],
-            ["I actively seek new skills and knowledge", 5]
+            ["🐕 I'm comfortable with common pets like dogs and cats", 0],
+            ["🐦 I'm comfortable with birds and smaller animals, but not necessarily larger animals", 0],
+            ["🐾 I'm comfortable around almost all types of animals", 0],
+            ["😨 I prefer to stay away from animals as much as possible", 0]
         ]
     },
 
 
     // ========================================================
-    // ENVIRONMENT
+    // PHYSICAL
     // ========================================================
 
     {
-        question: "How suitable is your current home for staying safe during a major disaster?",
-        category: "environment",
+        question: "How well can you climb when necessary?",
+        category: "physical",
         answers: [
-            ["It offers almost no protection", 1],
-            ["It provides limited protection", 2],
-            ["It is reasonably secure", 3],
-            ["It is quite secure", 4],
-            ["It is highly secure and defensible", 5]
+            ["🪜 I can comfortably climb stairs and basic ladders", 3],
+            ["🌳 I can climb trees, pipes, fences, or similar structures", 4],
+            ["🧗 I can handle difficult or uneven terrain and challenging climbs", 5],
+            ["🛗 I prefer lifts and avoid climbing whenever possible", 1]
+        ]
+    },
+
+
+    // ========================================================
+    // PROFILE ONLY
+    // ========================================================
+
+    {
+        question: "Which environment do you generally prefer spending your time in?",
+        category: "profile",
+        answers: [
+            ["🏠 Mostly indoors — I feel more comfortable inside", 0],
+            ["🌳 Mostly outdoors — I enjoy spending time outside", 0],
+            ["⚖️ Both — I'm equally comfortable indoors and outdoors", 0],
+            ["🤷 It depends on the situation — I don't have a strong preference", 0]
         ]
     },
 
     {
-        question: "How close are you to reliable sources of water?",
-        category: "environment",
+        question: "What best describes your current living situation?",
+        category: "profile",
         answers: [
-            ["I have no reliable source nearby", 1],
-            ["Water would be difficult to obtain", 2],
-            ["I have some options", 3],
-            ["Reliable water is reasonably accessible", 4],
-            ["I have a dependable water source available", 5]
+            ["👤 I live alone", 0],
+            ["👫 I live with a partner / spouse", 0],
+            ["👨‍👩‍👧‍👦 I live with family", 0],
+            ["🏠 I live with roommates / other people", 0],
+            ["🏠 Other / prefer not to say", 0]
         ]
     },
 
     {
-        question: "How isolated or exposed is your current location during a major crisis?",
-        category: "environment",
+        question: "How comfortable are you caring for children or babies during an emergency?",
+        category: "profile",
         answers: [
-            ["Extremely exposed and crowded", 1],
-            ["Quite exposed", 2],
-            ["Moderately exposed", 3],
-            ["Relatively safe and manageable", 4],
-            ["Well positioned away from major threats", 5]
+            ["👶 Very comfortable — I can confidently care for and handle children or babies", 0],
+            ["🙂 Somewhat comfortable — I can help with basic needs but may need guidance", 0],
+            ["😐 I would try to avoid responsibility for children or babies if possible", 0],
+            ["😣 I strongly dislike handling or caring for children or babies", 0]
+        ]
+    },
+
+
+    // ========================================================
+    // PRACTICAL
+    // ========================================================
+
+    {
+        question: "How good are you at understanding and following directions?",
+        category: "practical",
+        answers: [
+            ["🧭 Very good — I can quickly understand and follow detailed directions", 5],
+            ["👍 Good — I can follow normal directions without much difficulty", 4],
+            ["🤔 Average — I may need directions repeated or explained", 2],
+            ["😕 Poor — I often have difficulty understanding or remembering directions", 1]
         ]
     },
 
     {
-        question: "How well could your current location support you if you couldn't leave for several weeks?",
-        category: "environment",
+        question: "How well do you understand farming or gardening?",
+        category: "practical",
         answers: [
-            ["I could not manage for long", 1],
-            ["Only for a short period", 2],
-            ["I could manage for a few weeks", 3],
-            ["I could remain there comfortably for months", 4],
-            ["My location could support long-term self-sufficiency", 5]
+            ["🌾 Very well — I can grow and maintain crops or a vegetable garden independently", 5],
+            ["🌱 Fairly well — I understand basic planting, watering, and plant care", 3],
+            ["🌿 A little — I have some practical experience but would need guidance", 2],
+            ["❌ Not at all — I have little or no experience with farming or gardening", 1]
         ]
     },
 
     {
-        question: "How familiar are you with the area around where you live?",
-        category: "environment",
+        question: "How do you usually make sure your drinking water is safe?",
+        category: "practical",
         answers: [
-            ["I barely know the area", 1],
-            ["I know only the main roads", 2],
-            ["I know my neighborhood reasonably well", 3],
-            ["I know many routes and useful locations", 4],
-            ["I know the area extremely well, including alternate routes and resources", 5]
+            ["💧 I filter or purify it before drinking", 5],
+            ["🔥 I boil water before drinking when necessary", 5],
+            ["🧴 I mainly rely on packaged/bottled drinking water", 3],
+            ["🚰 I usually drink tap water directly without additional treatment", 1]
         ]
     }
 
@@ -510,7 +553,7 @@ function showQuestion() {
 
     progressBar.style.width = `${progress}%`;
 
-    q.answers.forEach((answer, index) => {
+    q.answers.forEach((answer) => {
 
         const button = document.createElement("button");
 
@@ -536,7 +579,10 @@ function selectAnswer(points) {
     const category = questions[currentQuestion].category;
 
     totalScore += points;
-    categoryScores[category] += points;
+
+    if (categoryScores[category] !== undefined) {
+        categoryScores[category] += points;
+    }
 
     currentQuestion++;
 
@@ -563,7 +609,38 @@ function finishQuiz() {
 
     progressBar.style.width = "100%";
 
-    const maximumScore = questions.length * 5;
+
+    // Calculate maximum possible score from
+    // scoring questions only.
+
+    let maximumScore = 0;
+
+    questions.forEach(question => {
+
+        question.answers.forEach(answer => {
+
+            if (answer[1] > maximumScore) {
+                maximumScore += answer[1];
+            }
+
+        });
+
+    });
+
+
+    // The above would count all answer choices.
+    // We need the maximum answer for each question instead.
+
+    maximumScore = questions.reduce((total, question) => {
+
+        const maxAnswer = Math.max(
+            ...question.answers.map(answer => answer[1])
+        );
+
+        return total + maxAnswer;
+
+    }, 0);
+
 
     const percentage =
         Math.round((totalScore / maximumScore) * 100);
@@ -657,25 +734,77 @@ function setResult(score) {
 
 function updateCategoryScores() {
 
-    const maxCategoryScore = 25;
+    const categories = [
+        "physical",
+        "medical",
+        "resources",
+        "practical",
+        "social",
+        "environment"
+    ];
 
-    physicalScore.textContent =
-        `${Math.round((categoryScores.physical / maxCategoryScore) * 100)}%`;
+    categories.forEach(category => {
 
-    medicalScore.textContent =
-        `${Math.round((categoryScores.medical / maxCategoryScore) * 100)}%`;
+        const categoryQuestions =
+            questions.filter(q => q.category === category);
 
-    resourcesScore.textContent =
-        `${Math.round((categoryScores.resources / maxCategoryScore) * 100)}%`;
+        if (categoryQuestions.length === 0) {
+            return;
+        }
 
-    practicalScore.textContent =
-        `${Math.round((categoryScores.practical / maxCategoryScore) * 100)}%`;
+        const maximumCategoryScore =
+            categoryQuestions.reduce((total, question) => {
 
-    socialScore.textContent =
-        `${Math.round((categoryScores.social / maxCategoryScore) * 100)}%`;
+                const maxAnswer = Math.max(
+                    ...question.answers.map(answer => answer[1])
+                );
 
-    environmentScore.textContent =
-        `${Math.round((categoryScores.environment / maxCategoryScore) * 100)}%`;
+                return total + maxAnswer;
+
+            }, 0);
+
+        if (maximumCategoryScore === 0) {
+
+            if (category === "physical") physicalScore.textContent = "—";
+            if (category === "medical") medicalScore.textContent = "—";
+            if (category === "resources") resourcesScore.textContent = "—";
+            if (category === "practical") practicalScore.textContent = "—";
+            if (category === "social") socialScore.textContent = "—";
+            if (category === "environment") environmentScore.textContent = "—";
+
+            return;
+        }
+
+        const percentage =
+            Math.round(
+                (categoryScores[category] / maximumCategoryScore) * 100
+            );
+
+        if (category === "physical") {
+            physicalScore.textContent = `${percentage}%`;
+        }
+
+        if (category === "medical") {
+            medicalScore.textContent = `${percentage}%`;
+        }
+
+        if (category === "resources") {
+            resourcesScore.textContent = `${percentage}%`;
+        }
+
+        if (category === "practical") {
+            practicalScore.textContent = `${percentage}%`;
+        }
+
+        if (category === "social") {
+            socialScore.textContent = "Profile";
+        }
+
+        if (category === "environment") {
+            environmentScore.textContent = `${percentage}%`;
+        }
+
+    });
 }
 
 
@@ -685,18 +814,28 @@ function updateCategoryScores() {
 
 function updateStrengthWeakness() {
 
-    const categories = Object.keys(categoryScores);
+    const categories = [
+        "physical",
+        "medical",
+        "resources",
+        "practical",
+        "environment"
+    ];
 
     let strongest = categories[0];
     let weakest = categories[0];
 
     categories.forEach(category => {
 
-        if (categoryScores[category] > categoryScores[strongest]) {
+        if (categoryScores[category] >
+            categoryScores[strongest]) {
+
             strongest = category;
         }
 
-        if (categoryScores[category] < categoryScores[weakest]) {
+        if (categoryScores[category] <
+            categoryScores[weakest]) {
+
             weakest = category;
         }
 
@@ -742,7 +881,7 @@ function shareResult() {
     const fullText =
         `${shareText}\n\n${window.location.href}`;
 
-    // Use native sharing when available
+
     if (navigator.share) {
 
         navigator.share({
@@ -754,21 +893,28 @@ function shareResult() {
         return;
     }
 
-    // Clipboard API when available
-    if (navigator.clipboard && navigator.clipboard.writeText) {
+
+    if (navigator.clipboard &&
+        navigator.clipboard.writeText) {
 
         navigator.clipboard.writeText(fullText)
             .then(() => {
-                alert("Your result has been copied to the clipboard!");
+
+                alert(
+                    "Your result has been copied to the clipboard!"
+                );
+
             })
             .catch(() => {
+
                 fallbackCopy(fullText);
+
             });
 
         return;
     }
 
-    // Older browser / HTTP fallback
+
     fallbackCopy(fullText);
 }
 
@@ -782,9 +928,9 @@ function challengeFriends() {
     const score = finalScore.textContent;
 
     const challengeText =
-        `I scored ${score}% on the Apocalypse Preparedness Quiz. 🧟\n\nHow prepared are YOU?\n\n${window.location.href}`;
+        `I scored ${score}% on the Apocalypse Preparedness Quiz. ⚠️\n\nHow prepared are YOU?\n\n${window.location.href}`;
 
-    // Use native sharing when available
+
     if (navigator.share) {
 
         navigator.share({
@@ -796,21 +942,28 @@ function challengeFriends() {
         return;
     }
 
-    // Clipboard API when available
-    if (navigator.clipboard && navigator.clipboard.writeText) {
+
+    if (navigator.clipboard &&
+        navigator.clipboard.writeText) {
 
         navigator.clipboard.writeText(challengeText)
             .then(() => {
-                alert("Challenge message copied! Send it to your friends.");
+
+                alert(
+                    "Challenge message copied! Send it to your friends."
+                );
+
             })
             .catch(() => {
+
                 fallbackCopy(challengeText);
+
             });
 
         return;
     }
 
-    // Older browser / HTTP fallback
+
     fallbackCopy(challengeText);
 }
 
@@ -821,7 +974,8 @@ function challengeFriends() {
 
 function fallbackCopy(text) {
 
-    const textarea = document.createElement("textarea");
+    const textarea =
+        document.createElement("textarea");
 
     textarea.value = text;
 
@@ -841,7 +995,9 @@ function fallbackCopy(text) {
 
         if (successful) {
 
-            alert("Copied! You can now paste and share it with your friends.");
+            alert(
+                "Copied! You can now paste and share it with your friends."
+            );
 
         } else {
 
