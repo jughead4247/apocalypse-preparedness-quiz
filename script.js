@@ -734,76 +734,32 @@ function setResult(score) {
 
 function updateCategoryScores() {
 
-    const categories = [
-        "physical",
-        "medical",
-        "resources",
-        "practical",
-        "social",
-        "environment"
-    ];
+    const categoryElements = {
+        physical: physicalScore,
+        medical: medicalScore,
+        resources: resourcesScore,
+        practical: practicalScore,
+        environment: environmentScore
+    };
 
-    categories.forEach(category => {
+    Object.keys(categoryElements).forEach(category => {
 
-        const categoryQuestions =
-            questions.filter(q => q.category === category);
+        const categoryQuestions = questions.filter(
+            question => question.category === category
+        );
 
-        if (categoryQuestions.length === 0) {
-            return;
-        }
-
-        const maximumCategoryScore =
-            categoryQuestions.reduce((total, question) => {
-
-                const maxAnswer = Math.max(
-                    ...question.answers.map(answer => answer[1])
-                );
-
-                return total + maxAnswer;
-
-            }, 0);
-
-        if (maximumCategoryScore === 0) {
-
-            if (category === "physical") physicalScore.textContent = "—";
-            if (category === "medical") medicalScore.textContent = "—";
-            if (category === "resources") resourcesScore.textContent = "—";
-            if (category === "practical") practicalScore.textContent = "—";
-            if (category === "social") socialScore.textContent = "—";
-            if (category === "environment") environmentScore.textContent = "—";
-
-            return;
-        }
+        const maximumScore =
+            categoryQuestions.length * 5;
 
         const percentage =
-            Math.round(
-                (categoryScores[category] / maximumCategoryScore) * 100
-            );
+            maximumScore > 0
+                ? Math.round(
+                    (categoryScores[category] / maximumScore) * 100
+                )
+                : 0;
 
-        if (category === "physical") {
-            physicalScore.textContent = `${percentage}%`;
-        }
-
-        if (category === "medical") {
-            medicalScore.textContent = `${percentage}%`;
-        }
-
-        if (category === "resources") {
-            resourcesScore.textContent = `${percentage}%`;
-        }
-
-        if (category === "practical") {
-            practicalScore.textContent = `${percentage}%`;
-        }
-
-        if (category === "social") {
-            socialScore.textContent = "Profile";
-        }
-
-        if (category === "environment") {
-            environmentScore.textContent = `${percentage}%`;
-        }
-
+        categoryElements[category].textContent =
+            `${percentage}%`;
     });
 }
 
@@ -819,6 +775,7 @@ function updateStrengthWeakness() {
         "medical",
         "resources",
         "practical",
+        "social",
         "environment"
     ];
 
@@ -826,31 +783,17 @@ function updateStrengthWeakness() {
 
     categories.forEach(category => {
 
-        const categoryQuestions =
-            questions.filter(q => q.category === category);
+        const categoryQuestions = questions.filter(
+            question => question.category === category
+        );
 
-        const maximumCategoryScore =
-            categoryQuestions.reduce((total, question) => {
+        const maximumScore =
+            categoryQuestions.length * 5;
 
-                const maxAnswer = Math.max(
-                    ...question.answers.map(answer => answer[1])
-                );
-
-                return total + maxAnswer;
-
-            }, 0);
-
-        if (maximumCategoryScore > 0) {
-
-            categoryPercentages[category] =
-                (categoryScores[category] / maximumCategoryScore) * 100;
-
-        } else {
-
-            categoryPercentages[category] = 0;
-
-        }
-
+        categoryPercentages[category] =
+            maximumScore > 0
+                ? (categoryScores[category] / maximumScore) * 100
+                : 0;
     });
 
 
@@ -883,7 +826,6 @@ function updateStrengthWeakness() {
     weaknessArea.textContent =
         categoryNames[weakest];
 }
-
 
 // ============================================================
 // RESTART
