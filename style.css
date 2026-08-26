@@ -46,6 +46,15 @@ body {
     margin-bottom: 18px;
 }
 
+.preparedness.png {
+    display: block;
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    margin: 0 auto 25px;
+    border-radius: 12px;
+}
+
 .eyebrow {
     font-size: 13px;
     font-weight: bold;
