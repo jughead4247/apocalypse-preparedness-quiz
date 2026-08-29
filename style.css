@@ -1,592 +1,735 @@
 * {
-    box-sizing: border-box;
-}
+  box-sizing: border-box;
+  }
+
 html {
-    scroll-behavior: smooth;
+scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #000;
-    color: #fff;
-    line-height: 1.6;
+margin: 0;
+min-height: 100vh;
+font-family: Arial, Helvetica, sans-serif;
+color: #f2f2f2;
+background:
+linear-gradient(
+rgba(0, 0, 0, 0.72),
+rgba(0, 0, 0, 0.88)
+),
+radial-gradient(
+circle at 50% 20%,
+#3b3b3b 0%,
+#111 45%,
+#050505 100%
+);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 20px;
 }
+
+body::before {
+content: "";
+position: fixed;
+inset: 0;
+pointer-events: none;
+background:
+repeating-linear-gradient(
+0deg,
+rgba(255,255,255,0.015) 0px,
+rgba(255,255,255,0.015) 1px,
+transparent 1px,
+transparent 4px
+);
+}
+
+/* =========================
+MAIN CONTAINER
+========================= */
 
 .container {
-    width: 100%;
-    max-width: 850px;
-    margin: 0 auto;
-    padding: 30px 20px 40px;
+width: 100%;
+max-width: 760px;
+position: relative;
+z-index: 1;
 }
 
-screen {
-    width: 100%;
-    background: #111;
-    border-radius: 14px;
-    padding: 35px 30px;
-    box-shadow: 0 4px 18px rgba(255, 255, 255, 0.05);
+/* =========================
+SCREENS
+========================= */
+
+.screen {
+width: 100%;
+background: rgba(12, 12, 12, 0.96);
+border: 1px solid #3a3a3a;
+border-radius: 18px;
+padding: 45px;
+box-shadow:
+0 25px 80px rgba(0, 0, 0, 0.8),
+0 0 0 1px rgba(255,255,255,0.02);
+animation: appear 0.4s ease;
 }
 
 .hidden {
-    display: none !important;
+display: none !important;
+}
+
+@keyframes appear {
+from {
+opacity: 0;
+transform: translateY(12px);
+}
+
+```
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+```
+
 }
 
 /* =========================
-   START SCREEN
-   ========================= */
+START SCREEN
+========================= */
 
 #start-screen {
-    text-align: center;
+text-align: center;
 }
 
-.icon {
-    font-size: 64px;
-    line-height: 1;
-    margin-bottom: 18px;
+.intro-card {
+background: rgba(12, 12, 12, 0.96);
+border: 1px solid #3a3a3a;
+border-radius: 18px;
+padding: 45px;
+box-shadow:
+0 25px 80px rgba(0, 0, 0, 0.8),
+0 0 0 1px rgba(255,255,255,0.02);
+animation: appear 0.4s ease;
+}
+
+/* =========================
+START IMAGE
+========================= */
+
+.quiz-start-image {
+display: block;
+width: 100%;
+max-width: 670px;
+height: auto;
+margin: 0 auto 25px;
+border-radius: 12px;
 }
 
 .preparedness-image {
-    display: block;
-    width: 100%;
-    max-width: 650px;
-    height: auto;
-    margin: 0 auto 25px;
-    border-radius: 12px;
-    object-fit: contain;
+display: block;
+width: 100%;
+max-width: 650px;
+height: auto;
+margin: 0 auto 25px;
+border-radius: 12px;
+object-fit: contain;
 }
 
-.eyebrow {
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    color: #aaa;
-    margin-bottom: 10px;
+/* =========================
+START CONTENT
+========================= */
+
+.intro-icon {
+font-size: 60px;
+margin-bottom: 10px;
+filter: grayscale(20%);
+}
+
+.icon {
+font-size: 80px;
+margin-bottom: 10px;
+filter: grayscale(20%);
 }
 
 h1 {
-    margin: 0;
-    font-size: 38px;
-    line-height: 1.15;
-    font-weight: 800;
+font-size: clamp(32px, 7vw, 52px);
+line-height: 1.05;
+margin: 10px 0 22px;
+letter-spacing: -1px;
 }
 
 .subtitle {
-    margin: 18px 0 10px;
-    font-size: 21px;
-    font-weight: 700;
+max-width: 560px;
+margin: auto;
+color: #aaa;
+font-size: 18px;
+line-height: 1.7;
+}
+
+.eyebrow {
+font-size: 13px;
+font-weight: bold;
+letter-spacing: 2px;
+color: #aaa;
+margin-bottom: 10px;
 }
 
 .intro-text {
-    max-width: 680px;
-    margin: 0 auto 24px;
-    color: #ccc;
-    font-size: 17px;
+max-width: 680px;
+margin: 0 auto 24px;
+color: #ccc;
+font-size: 17px;
 }
 
+/* =========================
+INTRO WARNING
+========================= */
+
 .intro-warning {
-    margin: 25px auto;
-    padding: 20px;
-    background: #1a1a1a;
-    border-left: 5px solid #fff;
-    border-radius: 8px;
-    text-align: left;
+margin: 25px auto;
+padding: 20px;
+background: #171717;
+border: 1px solid #303030;
+border-left: 5px solid #b51f1f;
+border-radius: 10px;
+text-align: left;
 }
 
 .intro-warning p {
-    margin: 0;
+margin: 0;
+color: #bbb;
+line-height: 1.7;
 }
 
 .intro-warning .highlight {
-    margin-bottom: 8px;
-    font-weight: 800;
+margin-bottom: 8px;
+font-weight: 800;
+color: #ddd;
 }
+
+/* =========================
+INFO
+========================= */
 
 .info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 25px 0;
-    color: #aaa;
-    font-size: 14px;
-    font-weight: 600;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+gap: 14px;
+margin: 28px 0;
+color: #777;
+font-size: 14px;
+text-transform: uppercase;
+letter-spacing: 1px;
 }
 
+/* =========================
+BUTTONS
+========================= */
+
 button {
-    border: none;
-    border-radius: 8px;
-    padding: 15px 24px;
-    font-size: 15px;
-    font-weight: 800;
-    cursor: pointer;
-    transition: transform 0.15s ease, opacity 0.15s ease;
+border: none;
+border-radius: 9px;
+padding: 17px 20px;
+font-size: 15px;
+font-weight: 700;
+letter-spacing: 0.7px;
+cursor: pointer;
+transition:
+transform 0.15s,
+background 0.15s,
+border-color 0.15s;
 }
 
 button:hover {
-    transform: translateY(-1px);
+transform: translateY(-2px);
 }
 
 button:active {
-    transform: translateY(0);
-}
-
-#start-btn {
-    width: 100%;
-    max-width: 430px;
-    background: #fff;
-    color: #000;
+transform: translateY(0);
 }
 
 /* =========================
-   QUIZ SCREEN
-   ========================= */
+START BUTTON
+========================= */
+
+#start-btn {
+width: 100%;
+margin-top: 10px;
+background: #b51f1f;
+color: white;
+}
+
+#start-btn:hover {
+background: #d32929;
+}
+
+/* =========================
+QUIZ SCREEN
+========================= */
 
 #quiz-screen {
-    min-height: 500px;
+min-height: 500px;
 }
 
 .quiz-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 14px;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    color: #666;
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 15px;
+color: #777;
+font-size: 13px;
+text-transform: uppercase;
+letter-spacing: 1px;
 }
 
 #quiz-label {
-    text-align: right;
+text-align: right;
 }
 
+/* =========================
+PROGRESS BAR
+========================= */
+
 .progress {
-    width: 100%;
-    height: 9px;
-    background: #333;
-    border-radius: 20px;
-    overflow: hidden;
-    margin-bottom: 35px;
+height: 6px;
+background: #292929;
+border-radius: 10px;
+margin-top: 14px;
+overflow: hidden;
 }
 
 #progress-bar {
-    width: 0%;
-    height: 100%;
-    background: #fff;
-    transition: width 0.25s ease;
+height: 100%;
+width: 0%;
+background: #b51f1f;
+transition: width 0.3s ease;
 }
+
+/* =========================
+QUESTIONS
+========================= */
 
 #question {
-    margin: 0 0 28px;
-    font-size: 28px;
-    line-height: 1.35;
+font-size: clamp(22px, 5vw, 31px);
+line-height: 1.4;
+margin: 35px 0 25px;
 }
 
+/* =========================
+ANSWERS
+========================= */
+
 #answers {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+display: flex;
+flex-direction: column;
+gap: 0;
 }
 
 .answer-btn {
-    width: 100%;
-    padding: 17px 18px;
-    background: #1a1a1a;
-    color: #fff;
-    border: 2px solid #444;
-    border-radius: 10px;
-    text-align: left;
-    font-size: 16px;
-    font-weight: 600;
+display: block;
+width: 100%;
+margin: 12px 0;
+padding: 19px;
+text-align: left;
+color: #ddd;
+background: #171717;
+border: 1px solid #333;
+border-radius: 10px;
+line-height: 1.45;
 }
 
 .answer-btn:hover {
-    background: #252525;
-    border-color: #777;
+background: #242424;
+border-color: #666;
+transform: translateX(3px);
 }
 
 /* =========================
-   RESULT SCREEN
-   ========================= */
+RESULTS
+========================= */
 
 #result-screen {
-    text-align: center;
+text-align: center;
 }
 
 .result-label {
-    margin: 0 0 8px;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    color: #777;
+text-align: center;
+color: #777;
+font-size: 13px;
+letter-spacing: 3px;
 }
 
 #result-title {
-    margin-bottom: 10px;
+margin-top: 10px;
+font-size: clamp(30px, 7vw, 46px);
+text-align: center;
 }
 
 .result-score {
-    margin: 15px 0 20px;
-    font-size: 64px;
-    font-weight: 900;
-    line-height: 1;
+text-align: center;
+margin: 20px 0;
+font-size: 56px;
+font-weight: 800;
 }
 
 #result-description {
-    max-width: 680px;
-    margin: 0 auto 25px;
-    color: #fff;
-    font-size: 17px;
+max-width: 600px;
+margin: auto;
+color: #bbb;
+font-size: 17px;
+line-height: 1.7;
+text-align: center;
 }
 
 #right-now-description {
-    color: #fff;
+color: #bbb;
 }
 
 /* =========================
-   PROFILE
-   ========================= */
+PROFILE
+========================= */
 
 .profile-section {
-    margin-top: 35px;
-    text-align: left;
+margin-top: 30px;
 }
 
 .profile-section h2 {
-    margin-bottom: 18px;
-    text-align: center;
-    font-size: 22px;
+margin-top: 0;
+margin-bottom: 18px;
+font-size: 26px;
+text-align: center;
 }
 
 .profile-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 12px;
 }
 
 .profile-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    padding: 16px;
-    background: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 9px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 15px;
+padding: 16px;
+background: #171717;
+border: 1px solid #303030;
+border-radius: 10px;
 }
 
 .profile-name {
-    font-weight: 700;
+font-weight: 700;
 }
 
 .profile-item span:last-child {
-    font-weight: 900;
+font-weight: 900;
 }
 
 /* =========================
-   STRENGTH / WEAKNESS
-   ========================= */
+STRENGTH / WEAKNESS
+========================= */
 
 .strength-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-top: 25px;
-    text-align: left;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 15px;
+margin-top: 25px;
+text-align: left;
 }
 
 .strength-box,
 .weakness-box {
-    padding: 20px;
-    border-radius: 10px;
+padding: 20px;
+border-radius: 10px;
 }
 
 .strength-box {
-    background: #1a1a1a;
-    border: 1px solid #333;
-    color: #fff;
+background: #171717;
+border: 1px solid #303030;
+color: #fff;
 }
 
 .weakness-box {
-    background: #151515;
-    border: 1px solid #333;
-    color: #fff;
+background: #151515;
+border: 1px solid #303030;
+color: #fff;
 }
 
 .strength-box h3,
 .weakness-box h3 {
-    margin: 0 0 8px;
-    font-size: 15px;
-    color: #fff;
+margin: 0 0 8px;
+font-size: 15px;
+color: #ddd;
 }
 
 .strength-box p,
 .weakness-box p {
-    margin: 0;
-    font-weight: 700;
-    color: #fff;
+margin: 0;
+font-weight: 700;
+color: #fff;
 }
 
 /* =========================
-   RESULT BUTTONS
-   ========================= */
+RESULT BUTTONS
+========================= */
 
 #restart-btn,
 #share-btn,
 #challenge-btn {
-    background: #222;
-    color: #fff;
-    border: 1px solid #444;
+width: 100%;
+margin-top: 10px;
 }
 
 #restart-btn {
-    margin-top: 30px;
-    background: #222;
-    color: #fff;
+margin-top: 30px;
+background: #b51f1f;
+color: white;
 }
 
-#share-btn,
+#restart-btn:hover {
+background: #d32929;
+}
+
+#share-btn {
+background: #222;
+color: #ddd;
+border: 1px solid #444;
+}
+
+#share-btn:hover {
+background: #303030;
+}
+
 #challenge-btn {
-    background: #eeeeee;
-    color: #222;
-    border: 1px solid #d0d0d0;
+background: #3a3a3a;
+color: white;
+border: 1px solid #555;
+}
+
+#challenge-btn:hover {
+background: #4a4a4a;
 }
 
 /* =========================
-   HOMEPAGE INFORMATION
-   ========================= */
+HOMEPAGE INFORMATION
+========================= */
 
 #home-info {
-    margin-top: 30px;
+margin-top: 30px;
 }
 
 .home-info {
-    background: #111;
-    border-radius: 14px;
-    padding: 30px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+margin-top: 30px;
+padding: 30px;
+background: rgba(12, 12, 12, 0.96);
+border: 1px solid #3a3a3a;
+border-radius: 18px;
 }
 
 .home-info h2 {
-    margin-top: 0;
-    font-size: 25px;
-}
-
-.home-info h3 {
-    margin-top: 25px;
-    margin-bottom: 8px;
-    font-size: 18px;
+margin-top: 0;
+font-size: 26px;
 }
 
 .home-info p {
-    margin: 0 0 15px;
-    color: #ccc;
+color: #aaa;
+font-size: 15px;
+line-height: 1.7;
+}
+
+.home-info h3 {
+margin-top: 28px;
+margin-bottom: 8px;
+font-size: 18px;
+color: #ddd;
+}
+
+.home-info h3:first-of-type {
+margin-top: 20px;
 }
 
 /* =========================
-   FOOTER
-   ========================= */
+FOOTER
+========================= */
 
 .site-footer {
-    margin-top: 10px;
-    padding: 30px 20px;
-    text-align: center;
-    color: #777;
-    font-size: 13px;
+width: 100%;
+max-width: 760px;
+margin-top: 20px;
+padding: 10px;
+font-size: 12px;
 }
 
 .footer-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 18px;
-    margin-bottom: 12px;
-}
-
-.footer-links a {
-    color: #555;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.footer-links a:hover {
-    text-decoration: underline;
-}
-
-.copyright {
-    color: #888;
-}
-
-/* =========================
-   MOBILE
-   ========================= */
-
-@media (max-width: 650px) {
-
-    .container {
-        padding: 15px 12px 30px;
-    }
-
-    .screen {
-        padding: 25px 18px;
-        border-radius: 10px;
-    }
-
-    h1 {
-        font-size: 29px;
-    }
-
-    .subtitle {
-        font-size: 18px;
-    }
-
-    .intro-text {
-        font-size: 15px;
-    }
-
-    .icon {
-        font-size: 52px;
-    }
-
-    .quiz-header {
-        font-size: 11px;
-    }
-
-    #question {
-        font-size: 23px;
-    }
-
-    .answer-btn {
-        padding: 15px;
-        font-size: 15px;
-    }
-
-    .result-score {
-        font-size: 54px;
-    }
-
-    .profile-grid,
-    .strength-section {
-        grid-template-columns: 1fr;
-    }
-
-    .home-info {
-        padding: 23px 18px;
-    }
-
-    .home-info h2 {
-        font-size: 22px;
-    }
-
-    .footer-links {
-        gap: 12px;
-    }
-}
-
-/* =========================
-   INFORMATION PAGES
-   ========================= */
-
-.info-page {
-    width: 100%;
-    max-width: 760px;
-    margin: 40px auto;
-
-    background: rgba(12, 12, 12, 0.96);
-
-    border: 1px solid #3a3a3a;
-
-    border-radius: 18px;
-
-    padding: 45px;
-
-    box-shadow:
-        0 25px 80px rgba(0, 0, 0, 0.8),
-        0 0 0 1px rgba(255,255,255,0.02);
-}
-
-.info-page h1 {
-    text-align: center;
-    margin-top: 0;
-}
-
-.info-page h2 {
-    margin-top: 35px;
-    margin-bottom: 12px;
-    font-size: 24px;
-}
-
-.info-page p {
-    color: #bbb;
-    font-size: 16px;
-    line-height: 1.7;
-}
-
-.info-page a {
-    color: #d32929;
-    text-decoration: none;
-}
-
-.info-page a:hover {
-    text-decoration: underline;
-}
-
-
-/* =========================
-   INFORMATION PAGE FOOTER
-   ========================= */
-
-.footer-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 18px;
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 18px;
 }
 
 .site-footer a {
-    color: #777;
-    text-decoration: none;
+color: #777;
+text-decoration: none;
 }
 
 .site-footer a:hover {
-    color: #ccc;
-    text-decoration: underline;
+color: #ccc;
+text-decoration: underline;
 }
 
 .copyright {
-    margin-top: 12px;
-    text-align: center;
-    color: #555;
+margin-top: 12px;
+text-align: center;
+color: #555;
+font-size: 11px;
+}
+
+/* =========================
+INFORMATION PAGES
+========================= */
+
+.info-page {
+max-width: 760px;
+margin: 40px auto;
+
+```
+background: rgba(12, 12, 12, 0.96);
+
+border: 1px solid #3a3a3a;
+
+border-radius: 18px;
+
+padding: 45px;
+
+box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255,255,255,0.02);
+```
+
+}
+
+.info-page h1 {
+text-align: center;
+}
+
+.info-page h2 {
+margin-top: 35px;
+margin-bottom: 12px;
+font-size: 24px;
+}
+
+.info-page p {
+color: #bbb;
+font-size: 16px;
+line-height: 1.7;
+}
+
+.info-page a {
+color: #d32929;
+text-decoration: none;
+}
+
+.info-page a:hover {
+text-decoration: underline;
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+```
+body {
+    padding: 10px;
+}
+
+.container {
+    padding: 0;
+}
+
+.screen,
+.intro-card {
+    padding: 30px 20px;
+    border-radius: 14px;
+}
+
+.intro-icon {
+    font-size: 50px;
+}
+
+.icon {
+    font-size: 60px;
+}
+
+.subtitle {
+    font-size: 16px;
+}
+
+.intro-text {
+    font-size: 15px;
+}
+
+.info {
+    gap: 8px;
     font-size: 11px;
 }
 
+.quiz-header {
+    font-size: 11px;
+}
 
-/* =========================
-   INFORMATION PAGE MOBILE
-   ========================= */
+#question {
+    margin-top: 28px;
+    font-size: 23px;
+}
 
-@media (max-width: 650px) {
+.answer-btn {
+    padding: 17px 15px;
+    font-size: 15px;
+}
 
-    .info-page {
-        margin: 20px auto;
-        padding: 30px 20px;
-        border-radius: 14px;
-    }
+.result-score {
+    font-size: 48px;
+}
 
-    .info-page h1 {
-        font-size: 34px;
-    }
+#result-title {
+    font-size: 32px;
+}
 
-    .info-page h2 {
-        font-size: 22px;
-    }
+#result-description {
+    font-size: 16px;
+}
 
-    .info-page p {
-        font-size: 15px;
-    }
+.profile-grid,
+.strength-section {
+    grid-template-columns: 1fr;
+}
+
+.home-info {
+    padding: 25px 20px;
+}
+
+.home-info h2 {
+    font-size: 22px;
+}
+
+.info-page {
+    margin: 20px auto;
+    padding: 30px 20px;
+    border-radius: 14px;
+}
+
+.info-page h1 {
+    font-size: 34px;
+}
+
+.info-page h2 {
+    font-size: 22px;
+}
+
+.info-page p {
+    font-size: 15px;
+}
+```
+
 }
