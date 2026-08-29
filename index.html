@@ -1,85 +1,98 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
 
-    <meta charset="UTF-8">
+```
+<meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>How Prepared Are You for the Apocalypse? – Apocalypse Preparedness Quiz</title>
+<title>How Prepared Are You for the Apocalypse? – Apocalypse Preparedness Quiz</title>
 
-    <meta name="description"
-        content="What if the apocalypse started right now? Take this 30-question apocalypse preparedness quiz and discover how prepared you really are based on your skills, resources, physical ability and current situation.">
+<meta name="description"
+    content="What if the apocalypse started right now? Take this 30-question apocalypse preparedness quiz and discover how prepared you really are based on your skills, resources, physical ability and current situation.">
 
-    <meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow">
 
-    <!-- Canonical URL -->
-    <link rel="canonical"
-        href="https://apocalypsequizzes.com/apocalypse-preparedness-quiz/">
+<!-- Canonical URL -->
+<link rel="canonical"
+    href="https://apocalypsequizzes.com/apocalypse-preparedness-quiz/">
 
+<!-- Open Graph -->
+<meta property="og:type" content="website">
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
+<meta property="og:title"
+    content="How Prepared Are You for the Apocalypse?">
 
-    <meta property="og:title"
-        content="How Prepared Are You for the Apocalypse?">
+<meta property="og:description"
+    content="What if the apocalypse started right now? Take the 30-question Apocalypse Preparedness Quiz and discover how prepared you really are.">
 
-    <meta property="og:description"
-        content="What if the apocalypse started right now? Take the 30-question Apocalypse Preparedness Quiz and discover how prepared you really are.">
+<meta property="og:url"
+    content="https://apocalypsequizzes.com/apocalypse-preparedness-quiz/">
 
-    <meta property="og:url"
-        content="https://apocalypsequizzes.com/apocalypse-preparedness-quiz/">
+<meta property="og:site_name"
+    content="Apocalypse Quizzes">
 
-    <meta property="og:site_name"
-        content="Apocalypse Quizzes">
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary">
 
+<meta name="twitter:title"
+    content="How Prepared Are You for the Apocalypse?">
 
-    <!-- Twitter / X -->
-    <meta name="twitter:card" content="summary">
+<meta name="twitter:description"
+    content="Take the 30-question Apocalypse Preparedness Quiz and discover your fictional preparedness score from 0–100%.">
 
-    <meta name="twitter:title"
-        content="How Prepared Are You for the Apocalypse?">
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+    <text y='.9em' font-size='90'>⚠️</text>
+    </svg>">
 
-    <meta name="twitter:description"
-        content="Take the 30-question Apocalypse Preparedness Quiz and discover your fictional preparedness score from 0–100%.">
+<!-- Stylesheet -->
+<link rel="stylesheet" href="style.css">
 
-
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-        <text y='.9em' font-size='90'>⚠️</text>
-        </svg>">
-
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Google Analytics -->
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YC3ERJSBST"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
 
-gtag('config', 'G-YC3ERJSBST');
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-YC3ERJSBST');
 </script>
+```
 
 </head>
 
 <body>
 
-    <main class="container">
+```
+<main class="container">
 
-        <!-- =====================================================
-             START SCREEN
-             ===================================================== -->
+    <!-- =====================================================
+         START SCREEN
+         ===================================================== -->
 
-        <section id="start-screen" class="screen">
+    <section id="start-screen">
 
-    <img src="preparedness.png"
-         alt="Apocalypse preparedness"
-         class="preparedness-image">
+        <div class="intro-card">
+
+            <img
+                src="preparedness.png"
+                alt="Apocalypse Preparedness Quiz"
+                class="quiz-start-image"
+            >
+
+            <h1>
+                HOW PREPARED ARE YOU FOR THE APOCALYPSE?
+            </h1>
 
             <p class="subtitle">
                 What if the apocalypse started right now?
@@ -114,363 +127,347 @@ gtag('config', 'G-YC3ERJSBST');
                 START QUIZ
             </button>
 
-        </section>
-
-
-        <!-- =====================================================
-             QUIZ SCREEN
-             ===================================================== -->
-
-        <section id="quiz-screen" class="screen hidden">
-
-            <div class="quiz-header">
-
-                <span id="question-number">
-                    Question 1 of 30
-                </span>
-
-                <span id="quiz-label">
-                    PREPAREDNESS TEST
-                </span>
-
-            </div>
-
-
-            <div class="progress">
-
-                <div id="progress-bar"></div>
-
-            </div>
-
-
-            <h2 id="question"></h2>
-
-
-            <div id="answers"></div>
-
-        </section>
-
-
-        <!-- =====================================================
-             RESULT SCREEN
-             ===================================================== -->
-
-        <section id="result-screen" class="screen hidden">
-
-            <div id="result-icon" class="icon">
-                🧟
-            </div>
-
-            <p class="result-label">
-                YOUR PREPAREDNESS
-            </p>
-
-            <h1 id="result-title"></h1>
-
-
-            <div class="result-score">
-
-                <span id="final-score">
-                    0
-                </span>%
-
-            </div>
-
-
-            <p id="result-description"></p>
-
-
-            <!-- IF APOCALYPSE STARTED RIGHT NOW -->
-
-            <div class="intro-warning">
-
-                <p class="highlight">
-                    ⚠️ IF IT STARTED RIGHT NOW...
-                </p>
-
-                <p id="right-now-description"></p>
-
-            </div>
-
-
-            <!-- CATEGORY BREAKDOWN -->
-
-            <div class="profile-section">
-
-                <h2>
-                    YOUR SURVIVOR PROFILE
-                </h2>
-
-
-                <div class="profile-grid">
-
-                    <div class="profile-item">
-
-                        <span class="profile-name">
-                            💪 Physical
-                        </span>
-
-                        <span id="physical-score">
-                            0%
-                        </span>
-
-                    </div>
-
-
-                    <div class="profile-item">
-
-                        <span class="profile-name">
-                            🩺 Medical
-                        </span>
-
-                        <span id="medical-score">
-                            0%
-                        </span>
-
-                    </div>
-
-
-                    <div class="profile-item">
-
-                        <span class="profile-name">
-                            🛠️ Practical Skills
-                        </span>
-
-                        <span id="practical-score">
-                            0%
-                        </span>
-
-                    </div>
-
-
-                    <div class="profile-item">
-                        
-    <span class="profile-name">
-        💧 Resources
-    </span>
-    <span id="resources-score">
-        0%
-    </span>
-</div>
-                    <div class="profile-item">
-
-                        <span class="profile-name">
-                            🏠 Environment
-                        </span>
-
-                        <span id="environment-score">
-                            0%
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- STRENGTHS / WEAKNESS -->
-
-            <div class="strength-section">
-
-                <div class="strength-box">
-
-                    <h3>
-                        💪 YOUR STRONGEST AREA
-                    </h3>
-
-                    <p id="strength-area">
-                        —
-                    </p>
-
-                </div>
-
-
-                <div class="weakness-box">
-
-                    <h3>
-                        ⚠️ AREA TO IMPROVE
-                    </h3>
-
-                    <p id="weakness-area">
-                        —
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- ACTION BUTTONS -->
-
-            <button id="restart-btn">
-                TRY AGAIN
-            </button>
-
-            <button id="share-btn">
-                📤 SHARE MY RESULT
-            </button>
-
-            <button id="challenge-btn">
-                🧟 CHALLENGE YOUR FRIENDS
-            </button>
-
-        </section>
-
-
-        <!-- =====================================================
-             HOMEPAGE INFORMATION
-             ===================================================== -->
-
-        <div id="home-info">
-
-
-            <section class="home-info">
-
-                <h2>
-                    About the Apocalypse Preparedness Quiz
-                </h2>
-
-                <p>
-                    What if the apocalypse started at this exact
-                    moment? This fictional preparedness quiz
-                    examines your current situation, practical
-                    abilities, physical capability, resources and
-                    adaptability.
-                </p>
-
-                <p>
-                    You'll answer 30 questions based on what you
-                    actually have and what you can currently do.
-                    Your choices produce a preparedness score from
-                    0 to 100%.
-                </p>
-
-                <p>
-                    The quiz is designed around one simple idea:
-                    <strong>
-                        how prepared are you if everything changes
-                        right now?
-                    </strong>
-                </p>
-
-            </section>
-
-
-            <section class="home-info">
-
-                <h2>
-                    Frequently Asked Questions
-                </h2>
-
-
-                <h3>
-                    How does the quiz work?
-                </h3>
-
-                <p>
-                    You'll answer 30 questions about your current
-                    skills, resources, physical ability, medical
-                    preparedness, living situation and adaptability.
-                    Each answer contributes to your final
-                    preparedness score.
-                </p>
-
-
-                <h3>
-                    What is the maximum score?
-                </h3>
-
-                <p>
-                    Your final preparedness score ranges from
-                    0% to 100%.
-                </p>
-
-
-                <h3>
-                    What does my score mean?
-                </h3>
-
-                <p>
-                    Your score represents your fictional level of
-                    preparedness based on the answers you provided.
-                    A higher score means you currently have more
-                    useful advantages for dealing with an
-                    apocalyptic scenario.
-                </p>
-
-
-                <h3>
-                    Is this a real survival test?
-                </h3>
-
-                <p>
-                    No. This quiz is fictional entertainment.
-                    It does not scientifically predict how someone
-                    would perform during an actual disaster or
-                    apocalypse.
-                </p>
-
-
-                <h3>
-                    Can I take the quiz again?
-                </h3>
-
-                <p>
-                    Yes. You can restart the quiz at any time and
-                    try different answers to see how your result
-                    changes.
-                </p>
-
-
-                <h3>
-                    Can I challenge my friends?
-                </h3>
-
-                <p>
-                    Yes. After completing the quiz, use the
-                    Challenge Your Friends button to share your
-                    preparedness result and see who is better
-                    prepared.
-                </p>
-
-            </section>
-
         </div>
 
-    </main>
+    </section>
 
 
     <!-- =====================================================
-         FOOTER
+         QUIZ SCREEN
          ===================================================== -->
 
-    <footer class="site-footer">
+    <section id="quiz-screen" class="screen hidden">
 
-        <div class="footer-links">
+        <div class="quiz-header">
 
-            <a href="/">
-                Home
-            </a>
+            <span id="question-number">
+                Question 1 of 30
+            </span>
 
-            <a href="about.html">About</a>
-
-            <a href="privacy.html">Privacy Policy</a>
-
-            <a href="contact.html">Contact</a>
-
-            <a href="disclaimer.html">Disclaimer</a>
+            <span id="quiz-label">
+                PREPAREDNESS TEST
+            </span>
 
         </div>
 
-        <div class="copyright">
-            © 2026 Apocalypse Quizzes
+        <div class="progress">
+
+            <div id="progress-bar"></div>
+
         </div>
 
-    </footer>
+        <h2 id="question"></h2>
+
+        <div id="answers"></div>
+
+    </section>
 
 
-    <script src="script.js"></script>
+    <!-- =====================================================
+         RESULT SCREEN
+         ===================================================== -->
+
+    <section id="result-screen" class="screen hidden">
+
+        <div id="result-icon" class="icon">
+            🧟
+        </div>
+
+        <p class="result-label">
+            YOUR PREPAREDNESS
+        </p>
+
+        <h1 id="result-title"></h1>
+
+        <div class="result-score">
+
+            <span id="final-score">
+                0
+            </span>%
+
+        </div>
+
+        <p id="result-description"></p>
+
+        <!-- IF APOCALYPSE STARTED RIGHT NOW -->
+
+        <div class="intro-warning">
+
+            <p class="highlight">
+                ⚠️ IF IT STARTED RIGHT NOW...
+            </p>
+
+            <p id="right-now-description"></p>
+
+        </div>
+
+        <!-- CATEGORY BREAKDOWN -->
+
+        <div class="profile-section">
+
+            <h2>
+                YOUR SURVIVOR PROFILE
+            </h2>
+
+            <div class="profile-grid">
+
+                <div class="profile-item">
+
+                    <span class="profile-name">
+                        💪 Physical
+                    </span>
+
+                    <span id="physical-score">
+                        0%
+                    </span>
+
+                </div>
+
+                <div class="profile-item">
+
+                    <span class="profile-name">
+                        🩺 Medical
+                    </span>
+
+                    <span id="medical-score">
+                        0%
+                    </span>
+
+                </div>
+
+                <div class="profile-item">
+
+                    <span class="profile-name">
+                        🛠️ Practical Skills
+                    </span>
+
+                    <span id="practical-score">
+                        0%
+                    </span>
+
+                </div>
+
+                <div class="profile-item">
+
+                    <span class="profile-name">
+                        💧 Resources
+                    </span>
+
+                    <span id="resources-score">
+                        0%
+                    </span>
+
+                </div>
+
+                <div class="profile-item">
+
+                    <span class="profile-name">
+                        🏠 Environment
+                    </span>
+
+                    <span id="environment-score">
+                        0%
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- STRENGTHS / WEAKNESS -->
+
+        <div class="strength-section">
+
+            <div class="strength-box">
+
+                <h3>
+                    💪 YOUR STRONGEST AREA
+                </h3>
+
+                <p id="strength-area">
+                    —
+                </p>
+
+            </div>
+
+            <div class="weakness-box">
+
+                <h3>
+                    ⚠️ AREA TO IMPROVE
+                </h3>
+
+                <p id="weakness-area">
+                    —
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- ACTION BUTTONS -->
+
+        <button id="restart-btn">
+            TRY AGAIN
+        </button>
+
+        <button id="share-btn">
+            📤 SHARE MY RESULT
+        </button>
+
+        <button id="challenge-btn">
+            🧟 CHALLENGE YOUR FRIENDS
+        </button>
+
+    </section>
+
+
+    <!-- =====================================================
+         HOMEPAGE INFORMATION
+         ===================================================== -->
+
+    <div id="home-info">
+
+        <section class="home-info">
+
+            <h2>
+                About the Apocalypse Preparedness Quiz
+            </h2>
+
+            <p>
+                What if the apocalypse started at this exact
+                moment? This fictional preparedness quiz
+                examines your current situation, practical
+                abilities, physical capability, resources and
+                adaptability.
+            </p>
+
+            <p>
+                You'll answer 30 questions based on what you
+                actually have and what you can currently do.
+                Your choices produce a preparedness score from
+                0 to 100%.
+            </p>
+
+            <p>
+                The quiz is designed around one simple idea:
+                <strong>
+                    how prepared are you if everything changes
+                    right now?
+                </strong>
+            </p>
+
+        </section>
+
+        <section class="home-info">
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+            <h3>
+                How does the quiz work?
+            </h3>
+
+            <p>
+                You'll answer 30 questions about your current
+                skills, resources, physical ability, medical
+                preparedness, living situation and adaptability.
+                Each answer contributes to your final
+                preparedness score.
+            </p>
+
+            <h3>
+                What is the maximum score?
+            </h3>
+
+            <p>
+                Your final preparedness score ranges from
+                0% to 100%.
+            </p>
+
+            <h3>
+                What does my score mean?
+            </h3>
+
+            <p>
+                Your score represents your fictional level of
+                preparedness based on the answers you provided.
+                A higher score means you currently have more
+                useful advantages for dealing with an
+                apocalyptic scenario.
+            </p>
+
+            <h3>
+                Is this a real survival test?
+            </h3>
+
+            <p>
+                No. This quiz is fictional entertainment.
+                It does not scientifically predict how someone
+                would perform during an actual disaster or
+                apocalypse.
+            </p>
+
+            <h3>
+                Can I take the quiz again?
+            </h3>
+
+            <p>
+                Yes. You can restart the quiz at any time and
+                try different answers to see how your result
+                changes.
+            </p>
+
+            <h3>
+                Can I challenge my friends?
+            </h3>
+
+            <p>
+                Yes. After completing the quiz, use the
+                Challenge Your Friends button to share your
+                preparedness result and see who is better
+                prepared.
+            </p>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="site-footer">
+
+    <div class="footer-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="about.html">About</a>
+
+        <a href="privacy.html">Privacy Policy</a>
+
+        <a href="contact.html">Contact</a>
+
+        <a href="disclaimer.html">Disclaimer</a>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 Apocalypse Quizzes
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+```
 
 </body>
 
