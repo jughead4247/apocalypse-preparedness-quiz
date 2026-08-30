@@ -126,35 +126,50 @@
 
 
     <!-- =====================================================
-         QUIZ SCREEN
-         ===================================================== -->
+     QUIZ SCREEN
+     ===================================================== -->
 
-    <section id="quiz-screen" class="screen hidden">
+<section id="quiz-screen" class="screen hidden">
 
-        <div class="quiz-header">
+    <div class="quiz-header">
 
-            <span id="question-number">
-                Question 1 of 30
-            </span>
+        <span id="question-number">
+            Question 1 of 30
+        </span>
 
-            <span id="quiz-label">
-                PREPAREDNESS TEST
-            </span>
+        <span id="quiz-label">
+            PREPAREDNESS TEST
+        </span>
 
-        </div>
+    </div>
 
-        <div class="progress">
+    <div class="progress">
 
-            <div id="progress-bar"></div>
+        <div id="progress-bar"></div>
 
-        </div>
+    </div>
 
-        <h2 id="question"></h2>
+    <h2 id="question"></h2>
 
-        <div id="answers"></div>
+    <div id="answers"></div>
 
-    </section>
+    <div class="quiz-navigation">
 
+        <button id="back-btn" class="nav-btn" disabled>
+            ← Back
+        </button>
+
+        <button id="next-btn" class="nav-btn">
+            Next →
+        </button>
+
+        <button id="submit-btn" class="nav-btn submit-btn hidden" disabled>
+            Answer All Questions
+        </button>
+
+    </div>
+
+</section>
 
     <!-- =====================================================
          RESULT SCREEN
