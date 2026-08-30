@@ -1,12 +1,3 @@
-// ============================================================
-// APOCALYPSE PREPAREDNESS QUIZ
-// ============================================================
-
-
-// ============================================================
-// QUESTIONS
-// ============================================================
-
 const questions = [
 
     // ========================================================
@@ -23,7 +14,6 @@ const questions = [
             ["🌾 Rural area / farm / isolated property", 5]
         ]
     },
-
 
     // ========================================================
     // PHYSICAL
@@ -51,7 +41,6 @@ const questions = [
         ]
     },
 
-
     // ========================================================
     // RESOURCES
     // ========================================================
@@ -67,7 +56,6 @@ const questions = [
         ]
     },
 
-
     // ========================================================
     // PROFILE ONLY
     // ========================================================
@@ -82,7 +70,6 @@ const questions = [
             ["❌ Neither", 0]
         ]
     },
-
 
     // ========================================================
     // MEDICAL
@@ -110,7 +97,6 @@ const questions = [
         ]
     },
 
-
     // ========================================================
     // PROFILE ONLY
     // ========================================================
@@ -125,7 +111,6 @@ const questions = [
             ["😨 Extremely uncomfortable — I may panic or feel unable to stay inside", 0]
         ]
     },
-
 
     // ========================================================
     // MEDICAL
@@ -153,7 +138,6 @@ const questions = [
         ]
     },
 
-
     // ========================================================
     // PHYSICAL
     // ========================================================
@@ -180,7 +164,6 @@ const questions = [
         ]
     },
 
-
     // ========================================================
     // RESOURCES
     // ========================================================
@@ -195,7 +178,6 @@ const questions = [
             ["☀️ Solar-powered light / flashlight", 5]
         ]
     },
-
 
     // ========================================================
     // PRACTICAL
@@ -260,7 +242,6 @@ const questions = [
         ]
     },
 
-
     // ========================================================
     // RESOURCES
     // ========================================================
@@ -287,7 +268,6 @@ const questions = [
         ]
     },
 
-
     // ========================================================
     // PROFILE ONLY
     // ========================================================
@@ -302,7 +282,6 @@ const questions = [
             ["🤷 No strong preference — it would depend on the situation", 0]
         ]
     },
-
 
     // ========================================================
     // PRACTICAL
@@ -323,7 +302,6 @@ const questions = [
         ]
     },
 
-
     // ========================================================
     // PROFILE ONLY
     // ========================================================
@@ -339,7 +317,6 @@ const questions = [
         ]
     },
 
-
     // ========================================================
     // PHYSICAL
     // ========================================================
@@ -354,7 +331,6 @@ const questions = [
             ["🛗 I prefer lifts and avoid climbing whenever possible", 1]
         ]
     },
-
 
     // ========================================================
     // PROFILE ONLY
@@ -393,7 +369,6 @@ const questions = [
             ["😣 I strongly dislike handling or caring for children or babies", 0]
         ]
     },
-
 
     // ========================================================
     // PRACTICAL
@@ -454,6 +429,10 @@ const questionText = document.getElementById("question");
 const answersContainer = document.getElementById("answers");
 const progressBar = document.getElementById("progress-bar");
 
+const backBtn = document.getElementById("back-btn");
+const nextBtn = document.getElementById("next-btn");
+const submitBtn = document.getElementById("submit-btn");
+
 const resultTitle = document.getElementById("result-title");
 const finalScore = document.getElementById("final-score");
 const resultDescription = document.getElementById("result-description");
@@ -475,6 +454,7 @@ const weaknessArea = document.getElementById("weakness-area");
 // ============================================================
 
 let currentQuestion = 0;
+
 let totalScore = 0;
 
 let categoryScores = {
@@ -485,6 +465,21 @@ let categoryScores = {
     social: 0,
     environment: 0
 };
+
+
+// ============================================================
+// ANSWER TRACKING
+// ============================================================
+
+// Stores the selected answer index for every question.
+// null means the question has not been answered.
+
+let userAnswers = [];
+
+
+// Automatic advancement timer
+
+let autoAdvanceTimer = null;
 
 
 // ============================================================
@@ -508,6 +503,7 @@ const categoryNames = {
 function startQuiz() {
 
     currentQuestion = 0;
+
     totalScore = 0;
 
     categoryScores = {
@@ -519,9 +515,18 @@ function startQuiz() {
         environment: 0
     };
 
+    // Create empty answer slots for every question.
+
+    userAnswers = new Array(questions.length).fill(null);
+
+    clearAutoAdvance();
+
     startScreen.classList.add("hidden");
+
     resultScreen.classList.add("hidden");
+
     homeInfo.classList.add("hidden");
+
     quizScreen.classList.remove("hidden");
 
     showQuestion();
@@ -548,12 +553,18 @@ function showQuestion() {
 
     answersContainer.innerHTML = "";
 
+
+    // Progress
+
     const progress =
-        ((currentQuestion) / questions.length) * 100;
+        (currentQuestion / questions.length) * 100;
 
     progressBar.style.width = `${progress}%`;
 
-    q.answers.forEach((answer) => {
+
+    // Create answer buttons
+
+    q.answers.forEach((answer, index) => {
 
         const button = document.createElement("button");
 
@@ -561,12 +572,30 @@ function showQuestion() {
 
         button.textContent = answer[0];
 
+
+        // Restore previously selected answer
+
+        if (userAnswers[currentQuestion] === index) {
+
+            button.classList.add("selected");
+
+        }
+
+
         button.addEventListener("click", () => {
-            selectAnswer(answer[1]);
+
+            selectAnswer(index);
+
         });
 
+
         answersContainer.appendChild(button);
+
     });
+
+
+    updateNavigation();
+
 }
 
 
@@ -574,27 +603,253 @@ function showQuestion() {
 // SELECT ANSWER
 // ============================================================
 
-function selectAnswer(points) {
+function selectAnswer(answerIndex) {
 
-    const category = questions[currentQuestion].category;
+    clearAutoAdvance();
 
-    totalScore += points;
 
-    if (categoryScores[category] !== undefined) {
-        categoryScores[category] += points;
+    // Store answer without adding score yet.
+
+    userAnswers[currentQuestion] = answerIndex;
+
+
+    // Highlight selected answer
+
+    const answerButtons =
+        answersContainer.querySelectorAll(".answer-btn");
+
+    answerButtons.forEach((button, index) => {
+
+        button.classList.toggle(
+            "selected",
+            index === answerIndex
+        );
+
+    });
+
+
+    // Final question does not automatically submit.
+
+    if (currentQuestion === questions.length - 1) {
+
+        updateNavigation();
+
+        return;
+
     }
 
-    currentQuestion++;
 
-    if (currentQuestion < questions.length) {
+    // Automatically advance after a short delay.
+
+    autoAdvanceTimer = setTimeout(() => {
+
+        goNext();
+
+    }, 350);
+
+}
+
+
+// ============================================================
+// NEXT QUESTION
+// ============================================================
+
+function goNext() {
+
+    clearAutoAdvance();
+
+
+    // Do not move forward without answering.
+
+    if (userAnswers[currentQuestion] === null) {
+
+        return;
+
+    }
+
+
+    if (currentQuestion < questions.length - 1) {
+
+        currentQuestion++;
 
         showQuestion();
 
-    } else {
+    }
 
-        finishQuiz();
+}
+
+
+// ============================================================
+// PREVIOUS QUESTION
+// ============================================================
+
+function goBack() {
+
+    clearAutoAdvance();
+
+
+    if (currentQuestion > 0) {
+
+        currentQuestion--;
+
+        showQuestion();
 
     }
+
+}
+
+
+// ============================================================
+// NAVIGATION STATE
+// ============================================================
+
+function updateNavigation() {
+
+    // Back button
+
+    backBtn.disabled = currentQuestion === 0;
+
+
+    // Final question
+
+    if (currentQuestion === questions.length - 1) {
+
+        nextBtn.classList.add("hidden");
+
+        submitBtn.classList.remove("hidden");
+
+
+        // Submit protection
+
+        const allAnswered =
+            userAnswers.every(answer => answer !== null);
+
+
+        submitBtn.disabled = !allAnswered;
+
+
+        if (allAnswered) {
+
+            submitBtn.textContent = "SUBMIT";
+
+        } else {
+
+            submitBtn.textContent = "Answer All Questions";
+
+        }
+
+    } else {
+
+        nextBtn.classList.remove("hidden");
+
+        submitBtn.classList.add("hidden");
+
+
+        // Next can only work when current question is answered.
+
+        nextBtn.disabled =
+            userAnswers[currentQuestion] === null;
+
+    }
+
+}
+
+
+// ============================================================
+// CLEAR AUTO ADVANCEMENT
+// ============================================================
+
+function clearAutoAdvance() {
+
+    if (autoAdvanceTimer !== null) {
+
+        clearTimeout(autoAdvanceTimer);
+
+        autoAdvanceTimer = null;
+
+    }
+
+}
+
+
+// ============================================================
+// CALCULATE SCORE
+// ============================================================
+
+function calculateScore() {
+
+    totalScore = 0;
+
+
+    categoryScores = {
+        physical: 0,
+        medical: 0,
+        resources: 0,
+        practical: 0,
+        social: 0,
+        environment: 0
+    };
+
+
+    questions.forEach((question, index) => {
+
+        const selectedAnswer =
+            userAnswers[index];
+
+
+        if (selectedAnswer === null) {
+
+            return;
+
+        }
+
+
+        const points =
+            question.answers[selectedAnswer][1];
+
+
+        totalScore += points;
+
+
+        if (categoryScores[question.category] !== undefined) {
+
+            categoryScores[question.category] += points;
+
+        }
+
+    });
+
+}
+
+
+// ============================================================
+// SUBMIT QUIZ
+// ============================================================
+
+function submitQuiz() {
+
+    clearAutoAdvance();
+
+
+    // Safety check.
+
+    const allAnswered =
+        userAnswers.every(answer => answer !== null);
+
+
+    if (!allAnswered) {
+
+        return;
+
+    }
+
+
+    // Score is calculated ONLY here.
+
+    calculateScore();
+
+    finishQuiz();
+
 }
 
 
@@ -605,45 +860,36 @@ function selectAnswer(points) {
 function finishQuiz() {
 
     quizScreen.classList.add("hidden");
+
     resultScreen.classList.remove("hidden");
 
     progressBar.style.width = "100%";
 
 
-    // Calculate maximum possible score from
-    // scoring questions only.
+    // Calculate maximum possible score.
 
-    let maximumScore = 0;
+    const maximumScore = questions.reduce(
+        (total, question) => {
 
-    questions.forEach(question => {
+            const maxAnswer =
+                Math.max(
+                    ...question.answers.map(
+                        answer => answer[1]
+                    )
+                );
 
-        question.answers.forEach(answer => {
+            return total + maxAnswer;
 
-            if (answer[1] > maximumScore) {
-                maximumScore += answer[1];
-            }
-
-        });
-
-    });
-
-
-    // The above would count all answer choices.
-    // We need the maximum answer for each question instead.
-
-    maximumScore = questions.reduce((total, question) => {
-
-        const maxAnswer = Math.max(
-            ...question.answers.map(answer => answer[1])
-        );
-
-        return total + maxAnswer;
-
-    }, 0);
+        },
+        0
+    );
 
 
     const percentage =
-        Math.round((totalScore / maximumScore) * 100);
+        Math.round(
+            (totalScore / maximumScore) * 100
+        );
+
 
     finalScore.textContent = percentage;
 
@@ -653,10 +899,12 @@ function finishQuiz() {
 
     updateStrengthWeakness();
 
+
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
+
 }
 
 
@@ -725,6 +973,7 @@ function setResult(score) {
             "If the apocalypse started right now, you would have a strong starting position. Your biggest challenge would be avoiding unnecessary risks and protecting your resources.";
 
     }
+
 }
 
 
@@ -742,25 +991,36 @@ function updateCategoryScores() {
         environment: environmentScore
     };
 
+
     Object.keys(categoryElements).forEach(category => {
 
-        const categoryQuestions = questions.filter(
-            question => question.category === category
-        );
+        const categoryQuestions =
+            questions.filter(
+                question =>
+                    question.category === category
+            );
+
 
         const maximumScore =
             categoryQuestions.length * 5;
 
+
         const percentage =
             maximumScore > 0
                 ? Math.round(
-                    (categoryScores[category] / maximumScore) * 100
+                    (
+                        categoryScores[category] /
+                        maximumScore
+                    ) * 100
                 )
                 : 0;
 
+
         categoryElements[category].textContent =
             `${percentage}%`;
+
     });
+
 }
 
 
@@ -779,25 +1039,36 @@ function updateStrengthWeakness() {
         "environment"
     ];
 
+
     const categoryPercentages = {};
+
 
     categories.forEach(category => {
 
-        const categoryQuestions = questions.filter(
-            question => question.category === category
-        );
+        const categoryQuestions =
+            questions.filter(
+                question =>
+                    question.category === category
+            );
+
 
         const maximumScore =
             categoryQuestions.length * 5;
 
+
         categoryPercentages[category] =
             maximumScore > 0
-                ? (categoryScores[category] / maximumScore) * 100
+                ? (
+                    categoryScores[category] /
+                    maximumScore
+                ) * 100
                 : 0;
+
     });
 
 
     let strongest = categories[0];
+
     let weakest = categories[0];
 
 
@@ -807,14 +1078,19 @@ function updateStrengthWeakness() {
             categoryPercentages[category] >
             categoryPercentages[strongest]
         ) {
+
             strongest = category;
+
         }
+
 
         if (
             categoryPercentages[category] <
             categoryPercentages[weakest]
         ) {
+
             weakest = category;
+
         }
 
     });
@@ -823,9 +1099,12 @@ function updateStrengthWeakness() {
     strengthArea.textContent =
         categoryNames[strongest];
 
+
     weaknessArea.textContent =
         categoryNames[weakest];
+
 }
+
 
 // ============================================================
 // RESTART
@@ -833,14 +1112,20 @@ function updateStrengthWeakness() {
 
 function restartQuiz() {
 
+    clearAutoAdvance();
+
     resultScreen.classList.add("hidden");
+
     startScreen.classList.remove("hidden");
+
     homeInfo.classList.remove("hidden");
+
 
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
+
 }
 
 
@@ -851,15 +1136,20 @@ function restartQuiz() {
 function shareResult() {
 
     const score = finalScore.textContent;
+
     const title = resultTitle.textContent;
+
 
     const shareText =
         `I scored ${score}% on the How Prepared Are You for the Apocalypse? quiz! I am "${title}". Can you beat my score?`;
 
+
     const shareUrl =
         window.location.href;
 
+
     // Native sharing
+
     if (navigator.share) {
 
         navigator.share({
@@ -870,11 +1160,15 @@ function shareResult() {
         .catch(() => {});
 
         return;
+
     }
 
+
     // Clipboard
+
     const fullText =
         `${shareText}\n\n${shareUrl}`;
+
 
     if (
         navigator.clipboard &&
@@ -896,11 +1190,16 @@ function shareResult() {
             });
 
         return;
+
     }
 
+
     // Older browser / HTTP fallback
+
     fallbackCopy(fullText);
+
 }
+
 
 // ============================================================
 // CHALLENGE FRIENDS
@@ -910,12 +1209,15 @@ function challengeFriends() {
 
     const score = finalScore.textContent;
 
+
     const challengeText =
         `I scored ${score}% on the Apocalypse Preparedness Quiz! 🧟\n\n` +
         `How prepared are YOU?\n\n` +
         `${window.location.href}`;
 
+
     // Native sharing
+
     if (navigator.share) {
 
         navigator.share({
@@ -926,9 +1228,12 @@ function challengeFriends() {
         .catch(() => {});
 
         return;
+
     }
 
+
     // Clipboard
+
     if (
         navigator.clipboard &&
         typeof navigator.clipboard.writeText === "function"
@@ -949,10 +1254,14 @@ function challengeFriends() {
             });
 
         return;
+
     }
 
+
     // Older browser / HTTP fallback
+
     fallbackCopy(challengeText);
+
 }
 
 
@@ -965,26 +1274,33 @@ function fallbackCopy(text) {
     const textarea =
         document.createElement("textarea");
 
+
     textarea.value = text;
 
     textarea.style.position = "fixed";
+
     textarea.style.left = "-9999px";
+
     textarea.style.top = "0";
+
 
     document.body.appendChild(textarea);
 
     textarea.focus();
+
     textarea.select();
+
 
     try {
 
         const successful =
             document.execCommand("copy");
 
+
         if (successful) {
 
             alert(
-                "Copied! You can now paste and share it with your friends."
+                "Copied! You can now paste it and share it with your friends."
             );
 
         } else {
@@ -999,7 +1315,9 @@ function fallbackCopy(text) {
 
     }
 
+
     document.body.removeChild(textarea);
+
 }
 
 
@@ -1007,10 +1325,47 @@ function fallbackCopy(text) {
 // BUTTON EVENTS
 // ============================================================
 
-startBtn.addEventListener("click", startQuiz);
+startBtn.addEventListener(
+    "click",
+    startQuiz
+);
 
-restartBtn.addEventListener("click", restartQuiz);
 
-shareBtn.addEventListener("click", shareResult);
+restartBtn.addEventListener(
+    "click",
+    restartQuiz
+);
 
-challengeBtn.addEventListener("click", challengeFriends);
+
+shareBtn.addEventListener(
+    "click",
+    shareResult
+);
+
+
+challengeBtn.addEventListener(
+    "click",
+    challengeFriends
+);
+
+
+// ============================================================
+// QUIZ NAVIGATION EVENTS
+// ============================================================
+
+backBtn.addEventListener(
+    "click",
+    goBack
+);
+
+
+nextBtn.addEventListener(
+    "click",
+    goNext
+);
+
+
+submitBtn.addEventListener(
+    "click",
+    submitQuiz
+);
