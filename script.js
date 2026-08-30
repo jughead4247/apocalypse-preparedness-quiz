@@ -645,7 +645,7 @@ function selectAnswer(answerIndex) {
 
         goNext();
 
-    }, 350);
+    }, 150);
 
 }
 
