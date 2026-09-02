@@ -462,7 +462,6 @@ let categoryScores = {
     medical: 0,
     resources: 0,
     practical: 0,
-    social: 0,
     environment: 0
 };
 
@@ -491,7 +490,6 @@ const categoryNames = {
     medical: "🩺 Medical",
     resources: "💧 Resources",
     practical: "🛠️ Practical Skills",
-    social: "👥 Social & Adaptability",
     environment: "🏠 Environment"
 };
 
@@ -511,7 +509,6 @@ function startQuiz() {
         medical: 0,
         resources: 0,
         practical: 0,
-        social: 0,
         environment: 0
     };
 
@@ -786,7 +783,6 @@ function calculateScore() {
         medical: 0,
         resources: 0,
         practical: 0,
-        social: 0,
         environment: 0
     };
 
@@ -1035,7 +1031,6 @@ function updateStrengthWeakness() {
         "medical",
         "resources",
         "practical",
-        "social",
         "environment"
     ];
 
