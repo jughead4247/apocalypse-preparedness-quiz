@@ -22,23 +22,27 @@
 <link rel="canonical"
     href="https://apocalypsequizzes.com/apocalypse-preparedness-quiz/">
 
+<!-- Open Graph -->
+
 <meta property="og:title"
     content="Apocalypse Preparedness Quiz">
 
 <meta property="og:description"
     content="How prepared would you be if a major disaster happened today? Take the 30-question Apocalypse Preparedness Quiz.">
 
-<meta property="og:type"
-    content="website">
-
 <meta property="og:url"
     content="https://apocalypsequizzes.com/apocalypse-preparedness-quiz/">
 
-<meta property="og:image"
-    content="https://apocalypsequizzes.com/images/preparedness.png">
+<meta property="og:type"
+    content="website">
+
+<meta property="og:site_name"
+    content="Apocalypse Quizzes">
+
+<!-- Twitter -->
 
 <meta name="twitter:card"
-    content="summary_large_image">
+    content="summary">
 
 <meta name="twitter:title"
     content="Apocalypse Preparedness Quiz">
@@ -46,578 +50,807 @@
 <meta name="twitter:description"
     content="Test your physical ability, resources, practical skills and preparedness in this 30-question apocalypse quiz.">
 
-<meta name="twitter:image"
-    content="https://apocalypsequizzes.com/images/preparedness.png">
+    <link rel="icon" type="image/png" href="favicon.png">
 
-<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet"
+    href="style.css">
 
-<link rel="stylesheet" href="../style.css">
+<!-- Google Analytics -->
 
 <script async
-    src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX">
-</script>
+    src="https://www.googletagmanager.com/gtag/js?id=G-YC3ERJSBST"></script>
 
 <script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-XXXXXXXXXX');
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-YC3ERJSBST');
 </script>
 
+<!-- Google AdSense -->
+
 <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX"
-    crossorigin="anonymous">
-</script>
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2285244517360573"
+    crossorigin="anonymous"></script>
 
 </head>
 
+
 <body>
 
-<header>
+<header class="site-header">
 
-    <div class="header-inner">
+    <button
+        class="menu-toggle"
+        id="menu-toggle"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="site-menu">
 
-        <a href="../" class="logo">
-            Apocalypse Quizzes
-        </a>
+        <span></span>
+        <span></span>
+        <span></span>
 
-        <button class="menu-toggle"
-                aria-label="Open menu">
-            ☰
-        </button>
+    </button>
 
-        <nav class="main-menu">
-
-            <a href="../">Home</a>
-
-            <a href="../search/">Search</a>
-
-            <a href="../categories/">Categories</a>
-
-            <a href="../about/">About</a>
-
-            <a href="../privacy/">Privacy</a>
-
-            <a href="../disclaimer/">Disclaimer</a>
-
-            <a href="../contact/">Contact</a>
-
-        </nav>
-
+    <div class="site-title">
+        APOCALYPSE QUIZZES
     </div>
 
 </header>
 
 
-<main>
+<nav
+    class="site-menu"
+    id="site-menu"
+    aria-label="Main navigation"
+    hidden>
 
+    <div class="menu-links">
 
-<!-- START SCREEN -->
+        <a href="/">
+            🏠 Home
+        </a>
 
-<section id="start-screen"
-         class="quiz-screen">
+        <a href="/search/">
+            🔎 Search Quizzes
+        </a>
 
-    <div class="quiz-card">
+        <a href="/categories/">
+            📂 Categories
+        </a>
 
-        <img
-            src="../images/preparedness.png"
-            alt="Apocalypse preparedness"
-            class="quiz-image">
+        <div class="menu-divider"></div>
 
-        <h1>Apocalypse Preparedness Quiz</h1>
+        <a href="/about.html">
+            About
+        </a>
 
-        <p class="quiz-intro">
-            What if a major disaster happened right now?
-            Would your current skills, resources and physical
-            ability be enough to handle it?
-        </p>
+        <a href="/privacy.html">
+            Privacy Policy
+        </a>
 
-        <div class="quiz-meta">
+        <a href="/disclaimer.html">
+            Disclaimer
+        </a>
 
-            <span>30 Questions</span>
-
-            <span>4 Choices</span>
-
-        </div>
-
-        <button id="start-btn"
-                class="primary-btn">
-            Start Quiz
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- QUIZ SCREEN -->
-
-<section id="quiz-screen"
-         class="quiz-screen"
-         style="display:none;">
-
-    <div class="quiz-card">
-
-        <div class="quiz-top">
-
-            <span id="question-number">
-                Question 1 of 30
-            </span>
-
-            <span>
-                PREPAREDNESS TEST
-            </span>
-
-        </div>
-
-        <div class="progress-container">
-
-            <div id="progress-bar"></div>
-
-        </div>
-
-        <h2 id="question"></h2>
-
-        <div id="answers"></div>
-
-        <div class="quiz-navigation">
-
-            <button id="prev-btn"
-                    class="secondary-btn">
-                Previous
-            </button>
-
-            <button id="next-btn"
-                    class="primary-btn">
-                Next
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- RESULT SCREEN -->
-
-<section id="result-screen"
-         class="quiz-screen"
-         style="display:none;">
-
-    <div class="quiz-card">
-
-        <p class="result-label">
-            YOUR RESULT
-        </p>
-
-        <div id="score"></div>
-
-        <h2 id="result-title"></h2>
-
-        <p id="result-description"></p>
-
-        <div class="result-message">
-
-            <strong>
-                IF IT STARTED RIGHT NOW...
-            </strong>
-
-            <p id="result-scenario"></p>
-
-        </div>
-
-
-        <div class="category-results">
-
-            <h3>Preparedness Breakdown</h3>
-
-            <div id="category-breakdown"></div>
-
-        </div>
-
-
-        <div class="strength-weakness">
-
-            <div>
-
-                <h3>Strongest Area</h3>
-
-                <p id="strength"></p>
-
-            </div>
-
-            <div>
-
-                <h3>Area to Improve</h3>
-
-                <p id="weakness"></p>
-
-            </div>
-
-        </div>
-
-
-        <div class="result-actions">
-
-            <button id="restart-btn"
-                    class="primary-btn">
-                Take Again
-            </button>
-
-            <button id="share-btn"
-                    class="secondary-btn">
-                Share Result
-            </button>
-
-            <button id="challenge-btn"
-                    class="secondary-btn">
-                Challenge Friends
-            </button>
-
-        </div>
-
-
-        <div class="suggested-quizzes">
-
-            <h3>Try Another Quiz</h3>
-
-            <div class="quiz-suggestions">
-
-                <a href="../ultimate-zombie-survival-test/"
-                   class="suggestion-card">
-
-                    <img
-                        src="../images/ultimate-zombie.png"
-                        alt="Ultimate Zombie Survival Test">
-
-                    <span>
-                        Ultimate Zombie Survival Test
-                    </span>
-
-                </a>
-
-
-                <a href="../nuclear-apocalypse-quiz/"
-                   class="suggestion-card">
-
-                    <img
-                        src="../images/Nucleareapocalyse.png"
-                        alt="Nuclear Apocalypse Quiz">
-
-                    <span>
-                        Nuclear Apocalypse Quiz
-                    </span>
-
-                </a>
-
-
-                <a href="../plague-survival-quiz/"
-                   class="suggestion-card">
-
-                    <img
-                        src="../images/plague-survival.png"
-                        alt="Plague Survival Quiz">
-
-                    <span>
-                        Plague Survival Quiz
-                    </span>
-
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <a href="../"
-           class="more-quizzes">
-            Explore More Quizzes
+        <a href="/contact.html">
+            Contact
         </a>
 
     </div>
 
-</section>
+</nav>
 
 
-<!-- INFORMATION -->
-
-<section id="home-info"
-         class="info-section">
+<main class="container">
 
 
-    <div class="info-card">
+    <!-- =====================================================
+         START SCREEN
+         ===================================================== -->
 
-        <h2>About the Apocalypse Preparedness Quiz</h2>
+    <section id="start-screen" class="screen">
 
-        <p>
-            This 30-question quiz explores how prepared you might
-            be for a major disruption to everyday life. It looks
-            at practical skills, physical ability, basic resources,
-            medical knowledge and your current living situation.
-            Your result is based on the answers you give rather
-            than on a single idea of what makes someone a good
-            survivor.
+        <img src="preparedness.png"
+            alt="Apocalypse Preparedness Quiz"
+            class="quiz-start-image">
+
+
+        <p class="subtitle">
+            What if a major disaster happened right now?
+            Your skills, resources and ability to adapt could
+            determine how well you handle the situation.
         </p>
 
-        <p>
-            Real emergencies are unpredictable, and preparedness
-            is more than owning equipment. Knowing how to use
-            what you already have, staying calm and adapting to
-            changing conditions can be just as important.
-        </p>
+        <div class="info">
+
+            <span>30 Questions</span>
+
+            <span>•</span>
+
+            <span>Score</span>
+
+            <span>•</span>
+
+            <span>Preparedness</span>
+
+        </div>
+
+        <button id="start-btn">
+            START QUIZ
+        </button>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         QUIZ SCREEN
+         ===================================================== -->
+
+    <section id="quiz-screen"
+        class="screen hidden">
+
+        <div class="quiz-card">
+
+            <div class="quiz-top">
+
+                <span id="question-number">
+                    Question 1 of 30
+                </span>
+
+                <span class="hazard-small">
+                    ⚠️
+                </span>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <div id="progress-bar"
+                    class="progress-bar">
+                </div>
+
+            </div>
+
+
+            <div class="question-area">
+
+                <h2 id="question">
+                    Question
+                </h2>
+
+            </div>
+
+
+            <div id="answers"
+                class="answers">
+            </div>
+
+
+            <div class="quiz-navigation">
+
+                <button id="back-btn"
+                    class="nav-btn"
+                    disabled>
+                    ← Back
+                </button>
+
+                <button id="next-btn"
+                    class="nav-btn">
+                    Next →
+                </button>
+
+                <button id="submit-btn"
+                    class="nav-btn submit-btn hidden"
+                    disabled>
+                    Answer All Questions
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         RESULT SCREEN
+         ===================================================== -->
+
+    <section id="result-screen"
+        class="screen hidden">
+
+        <div class="result-card">
+
+            <p class="result-label">
+                YOUR PREPAREDNESS RESULT
+            </p>
+
+            <h2 id="result-title">
+                Apocalypse Survivor
+            </h2>
+
+
+            <div class="score-display">
+
+                <span id="final-score">
+                    0
+                </span>
+
+                <span class="percent">
+                    %
+                </span>
+
+            </div>
+
+
+            <p class="score-label">
+                Preparedness Score
+            </p>
+
+
+            <div class="result-description-box">
+
+                <p id="result-description">
+                    Your result will appear here.
+                </p>
+
+            </div>
+
+
+            <div class="survival-box">
+
+                <span class="box-label">
+                    IF IT STARTED RIGHT NOW...
+                </span>
+
+                <strong id="survival-time">
+                    —
+                </strong>
+
+            </div>
+
+
+
+            <!-- =========================
+                 CATEGORY BREAKDOWN
+            ========================== -->
+
+            <div class="morality-section">
+
+                <h3>
+                    📊 Preparedness Breakdown
+                </h3>
+
+                <div class="morality-score">
+
+                    <span id="morality-score">
+                        0%
+                    </span>
+
+                </div>
+
+                <p id="morality-description">
+                    Your category results will appear here.
+                </p>
+
+            </div>
+
+
+
+            <!-- =========================
+                 ACTION BUTTONS
+            ========================== -->
+
+            <div class="result-buttons">
+
+                <button id="restart-btn"
+                    class="primary-btn">
+                    🔄 TRY AGAIN
+                </button>
+
+                <button id="share-btn"
+                    class="secondary-btn">
+                    📤 SHARE RESULT
+                </button>
+
+                <button id="challenge-btn"
+                    class="secondary-btn">
+                    ⚡ CHALLENGE SOMEONE
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SUGGESTED QUIZZES
+             ================================================= -->
+
+        <section class="suggested-quizzes">
+
+            <h2>
+                Suggested Quizzes
+            </h2>
+
+            <p class="suggested-subtitle">
+                Think you can handle more? Try another quiz.
+            </p>
+
+            <div class="suggested-grid">
+
+
+                <!-- ZOMBIE QUIZ -->
+
+                <a href="/ultimate-zombie-survival-test/"
+                   class="suggested-card">
+
+                    <img
+                        src="ultimate-zombie.png"
+                        alt="Ultimate Zombie Survival Test"
+                        class="suggested-image">
+
+                    <span class="suggested-title">
+                        Ultimate Zombie Survival Test
+                    </span>
+
+                    <span class="suggested-description">
+                        Test your survival decisions in a zombie apocalypse
+                    </span>
+
+                </a>
+
+
+                <!-- NUCLEAR QUIZ -->
+
+                <a href="/nuclear-apocalypse-quiz/"
+                   class="suggested-card">
+
+                    <img
+                        src="Nucleareapocalyse.png"
+                        alt="Nuclear Apocalypse Survival Quiz"
+                        class="suggested-image">
+
+                    <span class="suggested-title">
+                        Nuclear Apocalypse Survival Quiz
+                    </span>
+
+                    <span class="suggested-description">
+                        Make difficult choices after a nuclear catastrophe
+                    </span>
+
+                </a>
+
+
+                <!-- PLAGUE QUIZ -->
+
+                <a href="/plague-survival-quiz/"
+                   class="suggested-card">
+
+                    <img
+                        src="plague-survival.png"
+                        alt="Plague Survival Quiz"
+                        class="suggested-image">
+
+                    <span class="suggested-title">
+                        Plague Survival Quiz
+                    </span>
+
+                    <span class="suggested-description">
+                        Test your decisions during a deadly outbreak
+                    </span>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- MORE QUIZZES CTA -->
+
+        <div class="more-quizzes-card">
+
+            <h3>
+                Explore More Quizzes
+            </h3>
+
+            <p>
+                Discover more apocalypse, zombie, survival and
+                dystopian quizzes.
+            </p>
+
+            <a href="/" class="more-quizzes-btn">
+                🧟 APOCALYPSE QUIZZES
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         HOMEPAGE INFORMATION
+         ===================================================== -->
+
+    <div id="home-info">
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
+        <section class="home-info">
+
+            <h2>
+                About the Apocalypse Preparedness Quiz
+            </h2>
+
+
+            <p>
+                What would happen if a major disaster suddenly
+                disrupted everyday life? This 30-question quiz
+                explores how prepared you might be based on your
+                current resources, physical ability, practical
+                skills and living situation.
+            </p>
+
+
+            <p>
+                The questions cover areas such as water, food,
+                basic medical knowledge, transportation, lighting,
+                cooking, physical fitness, shelter and practical
+                skills. Some questions also consider your
+                environment and ability to adapt when normal
+                services are unavailable.
+            </p>
+
+
+            <p class="disclaimer">
+                This quiz is created for entertainment and general
+                preparedness awareness. It is not a professional
+                assessment or a substitute for official emergency
+                guidance.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             ESSENTIAL RESOURCES
+        ========================== -->
+
+        <section class="home-info">
+
+            <h2>
+                Essential Resources &amp; Basic Skills
+            </h2>
+
+
+            <p>
+                Water, food, medicine, lighting and energy are
+                among the most important resources during a major
+                disruption. Stored water and food can provide an
+                immediate buffer, while knowing how to prepare
+                food and make questionable water safer becomes
+                more valuable when normal supplies are interrupted.
+            </p>
+
+
+            <p>
+                Basic first aid, wound care, fire-starting,
+                cooking and the ability to use ordinary hand tools
+                can also be useful. Flashlights, suitable clothing
+                and reliable footwear may seem simple, but they can
+                become important when electricity, shops or normal
+                transportation are unavailable.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             PHYSICAL FITNESS
+        ========================== -->
+
+        <section class="home-info">
+
+            <h2>
+                Physical Fitness &amp; Mobility
+            </h2>
+
+
+            <p>
+                Physical ability can affect how easily someone
+                responds to an emergency. Walking long distances,
+                carrying supplies, climbing obstacles or moving
+                without transportation may become necessary when
+                roads, public transport or fuel supplies are
+                disrupted.
+            </p>
+
+
+            <p>
+                Endurance is only one part of physical
+                preparedness. Strength, balance, suitable
+                footwear and avoiding unnecessary injuries can
+                also matter. Being able to move efficiently and
+                conserve energy can be useful during a prolonged
+                emergency.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             ENVIRONMENT & SHELTER
+        ========================== -->
+
+        <section class="home-info">
+
+            <h2>
+                Your Environment &amp; Shelter
+            </h2>
+
+
+            <p>
+                Where you live can significantly affect your
+                options during an emergency. A city apartment,
+                suburban house, small town or rural property can
+                provide very different access to water, food,
+                transportation, open space and other resources.
+            </p>
+
+
+            <p>
+                Climate and local conditions matter as well.
+                Shelter should protect people from weather and
+                environmental hazards while providing a practical
+                place to rest, store supplies and remain safe.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             PEOPLE & INFORMATION
+        ========================== -->
+
+        <section class="home-info">
+
+            <h2>
+                People, Information &amp; Communication
+            </h2>
+
+
+            <p>
+                Emergencies can interrupt electricity, mobile
+                networks and internet access. Being able to
+                function without a smartphone, follow reliable
+                instructions and make decisions using available
+                information can therefore be valuable.
+            </p>
+
+
+            <p>
+                Other people can also provide important skills and
+                support. Groups may share responsibilities, but
+                they also require additional food, water and
+                coordination. Communication and cooperation can
+                become just as important as equipment.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             SHORT AND LONG TERM
+        ========================== -->
+
+        <section class="home-info">
+
+            <h2>
+                Short-Term vs. Long-Term Preparedness
+            </h2>
+
+
+            <p>
+                Preparing for the first few hours of an emergency
+                is different from remaining prepared for weeks or
+                months. Short-term preparedness focuses on immediate
+                safety, shelter, water, food, communication and
+                essential supplies.
+            </p>
+
+
+            <p>
+                Long-term situations create additional challenges,
+                including maintaining supplies, repairing equipment,
+                producing or obtaining food, managing waste and
+                adapting when the original plan no longer works.
+                Flexibility is therefore an important part of
+                preparedness.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             FICTION VS REALITY
+        ========================== -->
+
+        <section class="home-info">
+
+            <h2>
+                Apocalypse Fiction vs. Real Emergencies
+            </h2>
+
+
+            <p>
+                Movies and games often make survival situations
+                more dramatic than real emergencies. Fiction may
+                simplify access to supplies, exaggerate threats or
+                make major decisions happen much faster than they
+                would in reality.
+            </p>
+
+
+            <p>
+                This quiz uses an apocalypse scenario as an
+                entertaining way to think about general
+                preparedness. It is not a prediction of how a
+                real disaster would unfold. For an actual
+                emergency, follow instructions from local
+                authorities and emergency services.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             FAQ
+        ========================== -->
+
+        <section class="home-info">
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+
+            <h3>
+                How does the quiz work?
+            </h3>
+
+            <p>
+                Answer 30 questions based on your current
+                situation, abilities and resources. Your answers
+                are used to calculate an overall preparedness
+                score and category breakdown.
+            </p>
+
+
+            <h3>
+                What does my score mean?
+            </h3>
+
+            <p>
+                A higher score indicates that your answers show
+                stronger preparedness across the areas measured
+                by the quiz. It does not guarantee that you would
+                survive a real disaster.
+            </p>
+
+
+            <h3>
+                Does where I live affect my result?
+            </h3>
+
+            <p>
+                Yes. Your living environment can affect access to
+                water, food, transportation, shelter and other
+                resources, so the quiz includes questions about
+                your current situation.
+            </p>
+
+
+            <h3>
+                Do I need special survival equipment?
+            </h3>
+
+            <p>
+                Not necessarily. Preparedness is not only about
+                specialized equipment. Basic knowledge, physical
+                ability and knowing how to use ordinary resources
+                effectively can also be valuable.
+            </p>
+
+
+            <h3>
+                Can I take the quiz again?
+            </h3>
+
+            <p>
+                Yes. Select TRY AGAIN after receiving your result
+                to repeat the quiz and see whether your score
+                changes.
+            </p>
+
+
+            <h3>
+                Is this a real survival test?
+            </h3>
+
+            <p>
+                No. This is an entertainment and general-awareness
+                quiz based on a fictional apocalypse scenario.
+                Real emergencies vary considerably, so official
+                emergency guidance should always take priority.
+            </p>
+
+        </section>
+
 
     </div>
-
-
-    <div class="info-card">
-
-        <h2>Essential Resources &amp; Basic Skills</h2>
-
-        <p>
-            Water, food, medicine, lighting and the ability to
-            prepare basic meals become important very quickly
-            during a prolonged emergency. Stored water is useful,
-            but knowing how to make questionable water safer can
-            become even more valuable when supplies run low.
-        </p>
-
-        <p>
-            Basic first aid, wound care, fire-starting, cooking,
-            using hand tools and maintaining suitable clothing and
-            footwear are practical skills that do not depend on
-            modern technology. Backup lighting and alternative
-            ways to prepare food can also make life considerably
-            easier during a power outage.
-        </p>
-
-    </div>
-
-
-    <div class="info-card">
-
-        <h2>Physical Fitness &amp; Mobility</h2>
-
-        <p>
-            Physical fitness can affect almost every part of an
-            emergency situation. Walking long distances, carrying
-            supplies, climbing obstacles or moving quickly may
-            become necessary if normal transportation is
-            unavailable.
-        </p>
-
-        <p>
-            Endurance is not the only factor. Balance, strength,
-            footwear and the ability to avoid unnecessary injuries
-            can also matter. A person who can move efficiently
-            without exhausting themselves may have an advantage
-            during a long disruption.
-        </p>
-
-    </div>
-
-
-    <div class="info-card">
-
-        <h2>Your Environment &amp; Shelter</h2>
-
-        <p>
-            Where you live strongly affects preparedness. A city
-            apartment, suburban home, small town and rural property
-            can provide very different advantages and problems.
-            Population density, access to water, nearby resources,
-            local climate and transportation all influence what
-            options are available.
-        </p>
-
-        <p>
-            Shelter is also about more than simply having a roof.
-            Staying somewhere secure, dry and suitable for the
-            conditions can reduce exposure to weather and other
-            hazards while allowing limited resources to last
-            longer.
-        </p>
-
-    </div>
-
-
-    <div class="info-card">
-
-        <h2>People, Information &amp; Communication</h2>
-
-        <p>
-            Modern emergencies can interrupt mobile networks,
-            electricity and internet access. Being able to follow
-            instructions, understand reliable information and
-            function without a smartphone can therefore be useful.
-        </p>
-
-        <p>
-            Other people can also be an important resource.
-            Groups may share skills and responsibilities, although
-            larger groups also require more food, water and
-            coordination. Communication, cooperation and good
-            decision-making can become just as important as
-            physical equipment.
-        </p>
-
-    </div>
-
-
-    <div class="info-card">
-
-        <h2>Short-Term vs. Long-Term Preparedness</h2>
-
-        <p>
-            Surviving the first few hours of an emergency is very
-            different from remaining self-sufficient for weeks or
-            months. Short-term preparedness may focus on shelter,
-            water, food, communication and immediate safety.
-        </p>
-
-        <p>
-            Long-term preparedness introduces additional problems:
-            maintaining supplies, producing food, repairing
-            equipment, managing waste, protecting health and
-            adapting when the original plan no longer works.
-            Preparedness therefore involves both immediate
-            response and the ability to adapt over time.
-        </p>
-
-    </div>
-
-
-    <div class="info-card">
-
-        <h2>Apocalypse Fiction vs. Real Emergencies</h2>
-
-        <p>
-            Movies and games often portray dramatic survival
-            situations, but real disasters are usually less
-            predictable. Fiction may exaggerate threats, simplify
-            resources or make survival decisions happen much
-            faster than they would in reality.
-        </p>
-
-        <p>
-            This quiz uses the idea of an apocalypse as an
-            entertaining way to think about general preparedness.
-            It is not a prediction of how a real disaster would
-            unfold and should not replace official emergency
-            guidance or professional medical advice.
-        </p>
-
-    </div>
-
-
-    <!-- FAQ -->
-
-    <div class="info-card">
-
-        <h2>Frequently Asked Questions</h2>
-
-
-        <h3>How does the quiz work?</h3>
-
-        <p>
-            Answer each question based on your current situation,
-            abilities and resources. Your answers are converted
-            into an overall preparedness score and category
-            breakdown.
-        </p>
-
-
-        <h3>What does my score mean?</h3>
-
-        <p>
-            A higher score means your answers indicate stronger
-            preparedness across the areas measured by the quiz.
-            It does not guarantee that you would survive a real
-            disaster.
-        </p>
-
-
-        <h3>Does where I live affect the result?</h3>
-
-        <p>
-            Yes. Your environment can influence access to water,
-            food, transportation, shelter and other resources.
-            The quiz considers your current situation as part of
-            its assessment.
-        </p>
-
-
-        <h3>Do I need survival equipment?</h3>
-
-        <p>
-            Not necessarily. Preparedness is not only about
-            equipment. Basic knowledge, physical ability and the
-            ability to use ordinary resources effectively can be
-            valuable even without specialized gear.
-        </p>
-
-
-        <h3>Can I retake the quiz?</h3>
-
-        <p>
-            Yes. You can take the quiz again whenever you want.
-            Retaking it can also be useful after learning new
-            skills or improving your preparedness.
-        </p>
-
-
-        <h3>Is this a real survival test?</h3>
-
-        <p>
-            No. This is an entertainment and general-awareness
-            quiz built around a fictional apocalypse scenario.
-            Real emergencies vary greatly, so always follow
-            instructions from local authorities and emergency
-            services.
-        </p>
-
-    </div>
-
-
-    <div class="info-card disclaimer-card">
-
-        <h2>Important Note</h2>
-
-        <p>
-            This quiz is intended for entertainment and general
-            preparedness awareness. Its score should not be
-            considered a professional assessment of survival
-            ability. For real emergencies, rely on official
-            emergency services, local authorities and qualified
-            medical professionals.
-        </p>
-
-    </div>
-
-
-</section>
 
 </main>
 
 
-<footer>
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="site-footer">
 
     <div class="footer-inner">
 
-        <p>
-            &copy; 2026 Apocalypse Quizzes
-        </p>
+        <div class="footer-brand">
+            APOCALYPSE QUIZZES
+        </div>
 
         <div class="footer-links">
 
-            <a href="../about/">About</a>
+            <a href="/about.html">
+                About
+            </a>
 
-            <a href="../privacy/">Privacy</a>
+            <a href="/privacy.html">
+                Privacy Policy
+            </a>
 
-            <a href="../disclaimer/">Disclaimer</a>
+            <a href="/disclaimer.html">
+                Disclaimer
+            </a>
 
-            <a href="../contact/">Contact</a>
+            <a href="/contact.html">
+                Contact
+            </a>
 
+        </div>
+
+        <div class="copyright">
+            © 2026 Apocalypse Quizzes
         </div>
 
     </div>
