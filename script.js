@@ -554,7 +554,7 @@ function showQuestion() {
     // Progress
 
     const progress =
-        (currentQuestion / questions.length) * 100;
+        ((currentQuestion +1)/ questions.length) * 100;
 
     progressBar.style.width = `${progress}%`;
 
